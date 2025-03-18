@@ -1,0 +1,1995 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Les Voitures Électriques: Enjeux et Perspectives Économiques</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <style>
+        :root {
+            --primary: #00f5ff;
+            --secondary: #7d11ff;
+            --accent: #ff3a8c;
+            --dark: #0a0b15;
+            --darker: #050714;
+            --light: #f1f7ff;
+            --text-dark: #0c1030;
+            --text-light: #f0f4ff;
+            --neon-glow: 0 0 5px rgba(0, 245, 255, 0.7), 0 0 10px rgba(0, 245, 255, 0.5), 0 0 20px rgba(0, 245, 255, 0.3);
+            --purple-glow: 0 0 5px rgba(125, 17, 255, 0.7), 0 0 10px rgba(125, 17, 255, 0.5), 0 0 20px rgba(125, 17, 255, 0.3);
+            --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
+            --gradient-reverse: linear-gradient(135deg, var(--secondary), var(--primary));
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: var(--text-light);
+            background-color: var(--darker);
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(0, 245, 255, 0.03) 0%, transparent 30%),
+                radial-gradient(circle at 90% 80%, rgba(125, 17, 255, 0.03) 0%, transparent 30%);
+            background-attachment: fixed;
+            overflow-x: hidden;
+        }
+        
+        #particles-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.6;
+        }
+        
+        header {
+            background: var(--dark);
+            padding: 4rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .header-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            background: 
+                linear-gradient(135deg, rgba(0, 15, 40, 0.8), rgba(0, 10, 30, 0.9)),
+                url('https://api.placeholder/1920/1080') center/cover no-repeat;
+        }
+        
+        .glowing-line {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--primary);
+            box-shadow: var(--neon-glow);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 2rem 0;
+            position: relative;
+            z-index: 1;
+        }
+        
+        h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            line-height: 1.2;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            animation: textShine 3s linear infinite;
+        }
+        
+        @keyframes textShine {
+            0% { filter: drop-shadow(0 0 2px var(--primary)) drop-shadow(0 0 5px rgba(0, 245, 255, 0.3)); }
+            50% { filter: drop-shadow(0 0 5px var(--primary)) drop-shadow(0 0 10px rgba(0, 245, 255, 0.5)); }
+            100% { filter: drop-shadow(0 0 2px var(--primary)) drop-shadow(0 0 5px rgba(0, 245, 255, 0.3)); }
+        }
+        
+        header p {
+            font-size: 1.7rem;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 1.5rem auto;
+            letter-spacing: 1px;
+        }
+        
+        h2 {
+            font-size: 2.7rem;
+            color: var(--primary);
+            margin: 4rem 0 2rem;
+            position: relative;
+            padding-bottom: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 120px;
+            height: 3px;
+            background: var(--gradient);
+            border-radius: 2px;
+            box-shadow: var(--neon-glow);
+        }
+        
+        h3 {
+            font-size: 2rem;
+            color: var(--light);
+            margin: 2.5rem 0 1.8rem;
+            font-weight: 600;
+            position: relative;
+            display: inline-block;
+        }
+        
+        h3::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 60%;
+            height: 2px;
+            background: var(--primary);
+            box-shadow: var(--neon-glow);
+        }
+        
+        p {
+            margin-bottom: 1.5rem;
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: rgba(241, 247, 255, 0.9);
+        }
+        
+        .card {
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.7), rgba(10, 15, 30, 0.85));
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            padding: 3rem;
+            margin-bottom: 3.5rem;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+        
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--gradient);
+            box-shadow: var(--neon-glow);
+        }
+        
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+        }
+        
+        .card::after {
+            content: '';
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(0, 245, 255, 0.1), transparent 70%);
+            border-radius: 50%;
+            bottom: -100px;
+            right: -100px;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        
+        .card:hover::after {
+            opacity: 0.7;
+        }
+        
+        .chart-container {
+            height: 480px;
+            margin: 3rem 0;
+            position: relative;
+            border-radius: 14px;
+            padding: 1.5rem;
+            background: rgba(10, 11, 21, 0.7);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+            border: 1px solid rgba(0, 245, 255, 0.1);
+            overflow: hidden;
+        }
+        
+        .chart-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(0, 245, 255, 0.03), transparent 60%);
+            z-index: 0;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin: 3.5rem 0;
+        }
+        
+        .stat-card {
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.7), rgba(10, 15, 30, 0.85));
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+            padding: 2.5rem;
+            text-align: center;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+        }
+        
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--gradient);
+            box-shadow: var(--neon-glow);
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-12px) scale(1.03);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+        }
+        
+        .stat-value {
+            font-size: 4rem;
+            font-weight: 800;
+            margin: 1.2rem 0;
+            line-height: 1;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            filter: drop-shadow(0 0 5px rgba(0, 245, 255, 0.5));
+            transition: filter 0.3s ease;
+        }
+        
+        .stat-card:hover .stat-value {
+            filter: drop-shadow(0 0 8px rgba(0, 245, 255, 0.7));
+        }
+        
+        .stat-label {
+            font-size: 1.3rem;
+            color: var(--light);
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+        
+        .highlight {
+            border-radius: 14px;
+            background: linear-gradient(135deg, rgba(0, 245, 255, 0.05), rgba(125, 17, 255, 0.05));
+            border-left: 4px solid var(--primary);
+            padding: 2rem;
+            margin: 2.5rem 0;
+            font-size: 1.2rem;
+            position: relative;
+            box-shadow: var(--neon-glow);
+        }
+        
+        .highlight::before {
+            content: '"';
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            font-size: 3.5rem;
+            color: rgba(0, 245, 255, 0.3);
+            font-family: serif;
+        }
+        
+        .highlight p {
+            margin: 0;
+            padding-left: 35px;
+            font-weight: 500;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2.5rem 0;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+            background: rgba(10, 11, 21, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        th, td {
+            padding: 1.2rem 1.5rem;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        th {
+            background: var(--dark);
+            color: var(--primary);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+        }
+        
+        tr:nth-child(even) {
+            background-color: rgba(0, 245, 255, 0.03);
+        }
+
+        tr:hover {
+            background-color: rgba(0, 245, 255, 0.07);
+        }
+        
+        td {
+            transition: all 0.3s ease;
+        }
+
+        footer {
+            background-color: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 4rem 0;
+            margin-top: 6rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--gradient);
+            box-shadow: var(--neon-glow);
+        }
+
+        .challenges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .challenge-item {
+            flex: 1;
+            min-width: 280px;
+            background: linear-gradient(145deg, rgba(15, 23, 42, 0.7), rgba(10, 15, 30, 0.85));
+            border-radius: 14px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            border-top: 3px solid var(--accent);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .challenge-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15), 0 0 15px rgba(255, 58, 140, 0.2);
+        }
+        
+        .challenge-item::after {
+            content: '';
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, rgba(255, 58, 140, 0.1), transparent 70%);
+            border-radius: 50%;
+            bottom: -75px;
+            right: -75px;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        
+        .challenge-item:hover::after {
+            opacity: 0.7;
+        }
+        
+        .challenge-item h4 {
+            font-size: 1.4rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .challenge-item h4::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--accent);
+            box-shadow: 0 0 5px rgba(255, 58, 140, 0.7);
+        }
+
+        .small-chart {
+            height: 350px;
+            margin: 2.5rem 0;
+            position: relative;
+            border-radius: 14px;
+            padding: 1.5rem;
+            background: rgba(10, 11, 21, 0.7);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+            border: 1px solid rgba(0, 245, 255, 0.1);
+        }
+        
+        ul {
+            margin-left: 2rem;
+            margin-bottom: 2.5rem;
+        }
+        
+        li {
+            margin-bottom: 1rem;
+            position: relative;
+            padding-left: 10px;
+        }
+        
+        li::before {
+            content: '';
+            position: absolute;
+            left: -20px;
+            top: 12px;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--primary);
+            box-shadow: var(--neon-glow);
+        }
+        
+        /* Animations de voiture plus sophistiquées */
+        .car-animation-container {
+            position: absolute;
+            bottom: 15%;
+            right: 5%;
+            width: 300px;
+            height: 150px;
+            perspective: 800px;
+            perspective-origin: 50% 0%;
+            z-index: 3;
+            animation: floatCar 8s ease-in-out infinite;
+        }
+        
+        @keyframes floatCar {
+            0% { transform: translateY(0px) rotateZ(0deg); }
+            25% { transform: translateY(-15px) rotateZ(0.5deg); }
+            50% { transform: translateY(-25px) rotateZ(-0.5deg); }
+            75% { transform: translateY(-10px) rotateZ(0.3deg); }
+            100% { transform: translateY(0px) rotateZ(0deg); }
+        }
+        
+        .car-animation {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            animation: rotateCar 20s linear infinite;
+        }
+        
+        @keyframes rotateCar {
+            0% { transform: rotateY(0deg); }
+            100% { transform: rotateY(360deg); }
+        }
+        
+        .car-body {
+            position: absolute;
+            width: 200px;
+            height: 50px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotateY(0deg);
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            box-shadow: 0 0 15px var(--primary);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .car-top {
+            position: absolute;
+            width: 120px;
+            height: 30px;
+            top: 35%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 10px 10px 0 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .car-light {
+            position: absolute;
+            width: 10px;
+            height: 5px;
+            background: var(--primary);
+            border-radius: 5px;
+            box-shadow: 0 0 10px var(--primary), 0 0 20px var(--primary);
+            animation: pulseLights 2s ease-in-out infinite alternate;
+        }
+        
+        .light-front {
+            bottom: 10%;
+            left: 10%;
+        }
+        
+        .light-back {
+            bottom: 10%;
+            right: 10%;
+            background: #ff3a3a;
+            box-shadow: 0 0 10px #ff3a3a, 0 0 20px #ff3a3a;
+        }
+        
+        @keyframes pulseLights {
+            0% { opacity: 0.7; box-shadow: 0 0 5px currentColor, 0 0 10px currentColor; }
+            100% { opacity: 1; box-shadow: 0 0 15px currentColor, 0 0 30px currentColor; }
+        }
+        
+        .wheel {
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 50%;
+            border: 3px solid rgba(255, 255, 255, 0.5);
+            bottom: -10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5) inset, 0 0 5px var(--primary);
+            animation: rotateWheel 2s linear infinite;
+        }
+        
+        .wheel-left {
+            left: 30px;
+        }
+        
+        .wheel-right {
+            right: 30px;
+        }
+        
+        @keyframes rotateWheel {
+            0% { transform: rotateZ(0deg); }
+            100% { transform: rotateZ(360deg); }
+        }
+        
+        /* Bouton interactif flottant d'appel à l'action */
+        .floating-cta {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--dark);
+            color: var(--light);
+            border: none;
+            border-radius: 50px;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2), 0 0 0 2px rgba(0, 245, 255, 0.3);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 100;
+            border: 1px solid rgba(0, 245, 255, 0.3);
+        }
+        
+        .floating-cta:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), 0 0 0 3px rgba(0, 245, 255, 0.5);
+            background: var(--gradient);
+        }
+        
+        .floating-cta span {
+            display: inline-block;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        .floating-cta .icon {
+            font-size: 1.2rem;
+        }
+        
+        /* Section de navigation côté */
+        .side-nav {
+            position: fixed;
+            right: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 100;
+        }
+        
+        .nav-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-dot::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: var(--primary);
+            opacity: 0;
+            transform: scale(0);
+            transition: all 0.3s ease;
+        }
+        
+        .nav-dot:hover::before, .nav-dot.active::before {
+            opacity: 1;
+            transform: scale(1);
+            box-shadow: 0 0 10px var(--primary);
+        }
+        
+        .nav-tooltip {
+            position: absolute;
+            right: 25px;
+            top: 0;
+            background: var(--dark);
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.85rem;
+            color: var(--light);
+            opacity: 0;
+            pointer-events: none;
+            transform: translateX(10px);
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            border: 1px solid rgba(0, 245, 255, 0.3);
+        }
+        
+        .nav-dot:hover .nav-tooltip {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        /* Curseur personnalisé */
+        .cursor {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 2px solid var(--primary);
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            mix-blend-mode: difference;
+            z-index: 9999;
+            transition: transform 0.1s ease;
+            display: none;
+        }
+        
+        .cursor::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: var(--primary);
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        /* Desactivé pour mobile */
+        @media (min-width: 1024px) {
+            .cursor {
+                display: block;
+            }
+        }
+        
+        .expand {
+            transform: translate(-50%, -50%) scale(2);
+            background: rgba(0, 245, 255, 0.1);
+        }
+        
+        /* Effets de survol */
+        a, button, .card, .stat-card, .challenge-item, .nav-dot {
+            cursor: none;
+        }
+        
+        /* Barre de progression de lecture */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background: var(--gradient);
+            z-index: 1000;
+            width: 0%;
+            box-shadow: var(--neon-glow);
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.8rem;
+            }
+            
+            h2 {
+                font-size: 2.2rem;
+            }
+            
+            h3 {
+                font-size: 1.7rem;
+            }
+            
+            .card, .stat-card, .challenge-item {
+                padding: 2rem;
+            }
+            
+            .chart-container {
+                height: 400px;
+            }
+            
+            .side-nav, .floating-cta {
+                display: none;
+            }
+            
+            .car-animation-container {
+                transform: scale(0.7);
+                right: 0;
+                bottom: 10%;
+            }
+        }
+        
+        /* Animation pour les éléments au scroll */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Pour les chiffres qui comptent */
+        .counting-number {
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <!-- Progress bar -->
+    <div class="progress-bar"></div>
+    
+    <!-- Custom cursor -->
+    <div class="cursor"></div>
+    
+    <!-- Particles container -->
+    <div id="particles-container"></div>
+    
+    <!-- Side navigation -->
+    <div class="side-nav">
+        <div class="nav-dot active" data-section="header">
+            <span class="nav-tooltip">Accueil</span>
+        </div>
+        <div class="nav-dot" data-section="evolution">
+            <span class="nav-tooltip">Évolution du marché</span>
+        </div>
+        <div class="nav-dot" data-section="impact">
+            <span class="nav-tooltip">Impact économique</span>
+        </div>
+        <div class="nav-dot" data-section="strategies">
+            <span class="nav-tooltip">Stratégies</span>
+        </div>
+        <div class="nav-dot" data-section="challenges">
+            <span class="nav-tooltip">Défis et perspectives</span>
+        </div>
+    </div>
+    
+    <!-- Floating CTA -->
+    <button class="floating-cta">
+        <span class="icon">⚡</span>
+        <span>Explorer les solutions</span>
+    </button>
+
+    <header id="header">
+        <div class="header-bg"></div>
+        <div class="glowing-line"></div>
+        <div class="container header-content">
+            <h1>Les Voitures Électriques</h1>
+            <p>Enjeux et Perspectives Économiques</p>
+            
+            <div class="car-animation-container">
+                <div class="car-animation">
+                    <div class="car-body"></div>
+                    <div class="car-top"></div>
+                    <div class="car-light light-front"></div>
+                    <div class="car-light light-back"></div>
+                    <div class="wheel wheel-left"></div>
+                    <div class="wheel wheel-right"></div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="card fade-in">
+            <h2>Introduction</h2>
+            <p>La transition vers la mobilité électrique représente l'un des bouleversements économiques majeurs du XXIe siècle. Face aux défis environnementaux et aux préoccupations grandissantes concernant le changement climatique, les voitures électriques sont devenues un élément central des stratégies de décarbonation dans le secteur des transports.</p>
+            <p>Cette présentation analyse les enjeux économiques liés au développement des voitures électriques, en examinant comment cette transition impacte l'ensemble des acteurs économiques – constructeurs automobiles, consommateurs, États et collectivités – tout en créant de nouvelles opportunités et de nouveaux défis.</p>
+        </div>
+
+        <h2 id="evolution" class="fade-in">I. Évolution du marché des voitures électriques</h2>
+        
+        <div class="card fade-in">
+            <h3>Croissance du marché mondial des véhicules électriques</h3>
+            <div class="chart-container">
+                <canvas id="marketGrowthChart"></canvas>
+            </div>
+            <div class="highlight">
+                <p>En 2010, moins de 20 000 véhicules électriques étaient vendus dans le monde ; en 2024, ce chiffre dépasse les 14 millions d'unités annuelles, représentant près de 18% du marché automobile mondial.</p>
+            </div>
+        </div>
+
+        <div class="card fade-in">
+            <h3>Prix de fabrication des batteries ($/kWh)</h3>
+            <div class="chart-container">
+                <canvas id="batteryPriceChart"></canvas>
+            </div>
+            <p>L'amélioration des technologies de batteries a entraîné une réduction significative des coûts de plus de 90% en une décennie, rendant les véhicules électriques de plus en plus compétitifs face aux véhicules thermiques.</p>
+        </div>
+
+        <div class="grid fade-in">
+            <div class="stat-card">
+                <div class="stat-value" data-value="60">0</div>
+                <div class="stat-label">Part de marché de la Chine</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" data-value="25">0</div>
+                <div class="stat-label">Part de marché de l'Europe</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" data-value="12">0</div>
+                <div class="stat-label">Part de marché de l'Amérique du Nord</div>
+            </div>
+        </div>
+
+        <div class="card fade-in">
+            <h3>Structure actuelle du marché</h3>
+            <p>Le marché des véhicules électriques présente aujourd'hui une structure oligopolistique en pleine mutation avec trois principaux types d'acteurs:</p>
+            
+            <table>
+                <tr>
+                    <th>Type d'acteurs</th>
+                    <th>Exemples</th>
+                    <th>Caractéristiques</th>
+                </tr>
+                <tr>
+                    <td>Pure players</td>
+                    <td>Tesla, Rivian, Lucid</td>
+                    <td>Entreprises exclusivement dédiées aux véhicules électriques, avec un avantage concurrentiel initial en termes d'image et de technologie</td>
+                </tr>
+                <tr>
+                    <td>Constructeurs traditionnels</td>
+                    <td>Volkswagen, Stellantis, Renault</td>
+                    <td>Ont massivement investi dans l'électrification de leurs gammes, parfois en créant des filiales dédiées</td>
+                </tr>
+                <tr>
+                    <td>Nouveaux entrants</td>
+                    <td>BYD, NIO, SAIC</td>
+                    <td>Principalement des constructeurs chinois qui profitent de leur maîtrise de la chaîne d'approvisionnement des batteries</td>
+                </tr>
+            </table>
+            
+            <div class="chart-container">
+                <canvas id="marketShareChart"></canvas>
+            </div>
+        </div>
+
+        <h2 id="impact" class="fade-in">II. Impact économique de la transition</h2>
+        
+        <div class="card fade-in">
+            <h3>Restructuration de la chaîne de valeur automobile</h3>
+            
+            <div class="chart-container">
+                <canvas id="valueChainChart"></canvas>
+            </div>
+            
+            <div class="highlight">
+                <p>Dans un véhicule thermique, le moteur et la transmission représentent environ 40% de la valeur ajoutée. Dans un véhicule électrique, la batterie devient le composant central, représentant entre 30 et 40% du coût total du véhicule.</p>
+            </div>
+            
+            <p>Cette transformation a plusieurs conséquences économiques:</p>
+            <ul>
+                <li>Déplacement de la valeur ajoutée vers l'amont (producteurs de batteries) et vers l'aval (services de recharge)</li>
+                <li>Simplification de la production: un véhicule électrique comporte environ 200 pièces mobiles, contre 2 000 pour un véhicule thermique</li>
+                <li>Émergence de "gigafactories" de batteries nécessitant des investissements massifs (plus de 515 milliards d'euros annoncés au niveau mondial entre 2022 et 2030)</li>
+                <li>Tendance des constructeurs à internaliser la production de batteries et de composants stratégiques</li>
+            </ul>
+        </div>
+        
+        <div class="card fade-in">
+            <h3>Impact sur l'emploi et les compétences</h3>
+            
+            <div class="chart-container">
+                <canvas id="employmentChart"></canvas>
+            </div>
+            
+            <p>La fabrication d'un véhicule électrique requiert environ 30% de main-d'œuvre en moins qu'un véhicule thermique équivalent. Cependant, cette baisse est partiellement compensée par la création d'emplois dans de nouveaux segments:</p>
+            <ul>
+                <li>Production et recyclage des batteries</li>
+                <li>Développement et maintenance des infrastructures de recharge</li>
+                <li>Services numériques associés à la mobilité électrique</li>
+                <li>Recherche et développement sur les nouvelles technologies</li>
+            </ul>
+        </div>
+
+        <h2 id="strategies" class="fade-in">III. Stratégies économiques des acteurs</h2>
+        
+        <div class="card fade-in">
+            <h3>Politiques publiques et incitations économiques</h3>
+            
+            <div class="small-chart">
+                <canvas id="incentivesChart"></canvas>
+            </div>
+            
+            <p>Les pouvoirs publics jouent un rôle déterminant dans l'accélération de la transition vers l'électromobilité à travers différents leviers:</p>
+            
+            <div class="challenges">
+                <div class="challenge-item">
+                    <h4>Incitations financières</h4>
+                    <p>Bonus écologique à l'achat, primes à la conversion, avantages fiscaux</p>
+                </div>
+                <div class="challenge-item">
+                    <h4>Réglementations</h4>
+                    <p>Normes d'émissions CO2, interdictions programmées de véhicules thermiques (2035 dans l'UE)</p>
+                </div>
+                <div class="challenge-item">
+                    <h4>Infrastructures</h4>
+                    <p>Déploiement de réseaux de bornes, adaptation des réseaux électriques</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card fade-in">
+            <h3>Stratégies industrielles des constructeurs</h3>
+            
+            <table>
+                <tr>
+                    <th>Stratégie</th>
+                    <th>Acteurs</th>
+                    <th>Approche</th>
+                </tr>
+                <tr>
+                    <td>Volume et accessibilité</td>
+                    <td>Constructeurs chinois, certains européens</td>
+                    <td>Réduction drastique des coûts pour proposer des véhicules abordables (< 25 000 €)</td>
+                </tr>
+                <tr>
+                    <td>Différenciation premium</td>
+                    <td>Tesla, constructeurs allemands</td>
+                    <td>Positionnement haut de gamme justifiant un prix élevé</td>
+                </tr>
+                <tr>
+                    <td>Transition progressive</td>
+                    <td>Constructeurs japonais</td>
+                    <td>Technologies hybrides comme étape intermédiaire</td>
+                </tr>
+                <tr>
+                    <td>Écosystème intégré</td>
+                    <td>Divers acteurs</td>
+                    <td>Développement de services associés (recharge, autopartage)</td>
+                </tr>
+            </table>
+        </div>
+
+        <h2 id="challenges" class="fade-in">IV. Défis économiques et perspectives d'avenir</h2>
+        
+        <div class="card fade-in">
+            <h3>Enjeux de rentabilité et compétitivité</h3>
+            
+            <div class="chart-container">
+                <canvas id="profitabilityChart"></canvas>
+            </div>
+            
+            <p>Le seuil de rentabilité pour les véhicules électriques est généralement estimé à une production annuelle minimale de 500 000 à 1 million d'unités par plateforme, un niveau que seuls quelques acteurs atteignent actuellement.</p>
+            
+            <div class="challenges">
+                <div class="challenge-item">
+                    <h4>Coûts de production</h4>
+                    <p>Encore élevés malgré les progrès réalisés</p>
+                </div>
+                <div class="challenge-item">
+                    <h4>Concurrence chinoise</h4>
+                    <p>20-30% moins chers que les modèles occidentaux</p>
+                </div>
+                <div class="challenge-item">
+                    <h4>Dépendance aux subventions</h4>
+                    <p>Vulnérabilité aux changements de politiques</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card fade-in">
+            <h3>Évolutions technologiques et opportunités</h3>
+            
+            <div class="chart-container">
+                <canvas id="techEvolutionChart"></canvas>
+            </div>
+            
+            <p>L'électromobilité continue d'évoluer rapidement, ouvrant de nouvelles perspectives économiques:</p>
+            <ul>
+                <li>Innovations dans les batteries: batteries solides, sans cobalt ou utilisant de nouveaux matériaux comme le sodium, pouvant réduire les coûts de 30 à 50%</li>
+                <li>Intégration dans les réseaux énergétiques intelligents: technologies Vehicle-to-Grid permettant aux véhicules de restituer de l'électricité au réseau</li>
+                <li>Économie circulaire des batteries: développement d'une filière de reconditionnement et de recyclage, avec un potentiel de récupération de 95% des matériaux critiques</li>
+                <li>Convergence avec les technologies autonomes: transformation radicale des modèles économiques de la mobilité</li>
+            </ul>
+        </div>
+
+        <div class="card fade-in">
+            <h3>Conclusion</h3>
+            <p>La transition vers les voitures électriques constitue bien plus qu'une simple évolution technologique: elle représente une transformation systémique de l'économie automobile mondiale, avec des répercussions sur l'ensemble des secteurs adjacents – énergie, infrastructures, services de mobilité.</p>
+            <p>À l'horizon 2030-2035, les voitures électriques devraient représenter la majorité des ventes de véhicules neufs dans la plupart des économies avancées, transformant profondément non seulement l'industrie automobile, mais également nos modèles de mobilité et nos systèmes énergétiques.</p>
+            <div class="highlight">
+                <p>Cette révolution constitue à la fois un défi économique majeur et une opportunité historique de réinvention pour l'ensemble des acteurs concernés.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>Les Voitures Électriques: Enjeux et Perspectives Économiques</p>
+            <p>© 2025 - Tous droits réservés</p>
+        </div>
+    </footer>
+
+    <script>
+        // Configuration pour tous les graphiques
+        const colors = {
+            primary: '#00f5ff',
+            secondary: '#7d11ff',
+            accent: '#ff3a8c',
+            dark: '#0a0b15',
+            light: '#f1f7ff',
+            gradientPrimary: (ctx) => {
+                const gradient = ctx.createLinearGradient(0, 0, 0, 400);
+                gradient.addColorStop(0, 'rgba(0, 245, 255, 0.7)');
+                gradient.addColorStop(1, 'rgba(0, 245, 255, 0.1)');
+                return gradient;
+            },
+            gradientSecondary: (ctx) => {
+                const gradient = ctx.createLinearGradient(0, 0, 0, 400);
+                gradient.addColorStop(0, 'rgba(125, 17, 255, 0.7)');
+                gradient.addColorStop(1, 'rgba(125, 17, 255, 0.1)');
+                return gradient;
+            },
+            gradientAccent: (ctx) => {
+                const gradient = ctx.createLinearGradient(0, 0, 0, 400);
+                gradient.addColorStop(0, 'rgba(255, 58, 140, 0.7)');
+                gradient.addColorStop(1, 'rgba(255, 58, 140, 0.1)');
+                return gradient;
+            }
+        };
+
+        // Configuration globale pour tous les graphiques
+        Chart.defaults.font.family = "'Segoe UI', 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif";
+        Chart.defaults.font.size = 14;
+        Chart.defaults.color = '#f1f7ff';
+        Chart.defaults.plugins.tooltip.backgroundColor = 'rgba(10, 11, 21, 0.9)';
+        Chart.defaults.plugins.tooltip.titleFont = { size: 16, weight: 'bold' };
+        Chart.defaults.plugins.tooltip.bodyFont = { size: 14 };
+        Chart.defaults.plugins.tooltip.padding = 12;
+        Chart.defaults.plugins.tooltip.cornerRadius = 8;
+        Chart.defaults.plugins.tooltip.borderColor = colors.primary;
+        Chart.defaults.plugins.tooltip.borderWidth = 1;
+        Chart.defaults.plugins.legend.labels.usePointStyle = true;
+        Chart.defaults.plugins.legend.labels.padding = 15;
+        Chart.defaults.plugins.legend.labels.color = '#f1f7ff';
+        
+        // Système de particules avec Three.js
+        class ParticleSystem {
+            constructor() {
+                this.container = document.getElementById('particles-container');
+                this.scene = new THREE.Scene();
+                
+                this.camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+                this.camera.position.z = 30;
+                
+                this.renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+                this.renderer.setSize(window.innerWidth, window.innerHeight);
+                this.renderer.setPixelRatio(window.devicePixelRatio);
+                this.container.appendChild(this.renderer.domElement);
+                
+                this.particles = [];
+                this.count = window.innerWidth < 768 ? 100 : 200;
+                
+                window.addEventListener('resize', this.onWindowResize.bind(this));
+                
+                this.init();
+                this.animate();
+            }
+            
+            init() {
+                // Create particles
+                const particleGeometry = new THREE.BufferGeometry();
+                const particlesMaterial = new THREE.PointsMaterial({
+                    size: 0.5,
+                    transparent: true,
+                    opacity: 0.6,
+                    vertexColors: true,
+                    blending: THREE.AdditiveBlending
+                });
+                
+                const positions = new Float32Array(this.count * 3);
+                const colors = new Float32Array(this.count * 3);
+                const sizes = new Float32Array(this.count);
+                
+                const color1 = new THREE.Color(colors.primary);
+                const color2 = new THREE.Color(colors.secondary);
+                const color3 = new THREE.Color(colors.accent);
+                
+                for (let i = 0; i < this.count; i++) {
+                    // Positions
+                    positions[i * 3] = (Math.random() - 0.5) * 50;     // x
+                    positions[i * 3 + 1] = (Math.random() - 0.5) * 50; // y
+                    positions[i * 3 + 2] = (Math.random() - 0.5) * 50; // z
+                    
+                    // Colors - randomly choose one of three colors
+                    const colorChoice = Math.floor(Math.random() * 3);
+                    let selectedColor;
+                    
+                    if (colorChoice === 0) selectedColor = color1;
+                    else if (colorChoice === 1) selectedColor = color2;
+                    else selectedColor = color3;
+                    
+                    colors[i * 3] = selectedColor.r;     // r
+                    colors[i * 3 + 1] = selectedColor.g; // g
+                    colors[i * 3 + 2] = selectedColor.b; // b
+                    
+                    // Sizes
+                    sizes[i] = Math.random() * 2;
+                    
+                    // Store particles data for animation
+                    this.particles.push({
+                        velocity: {
+                            x: (Math.random() - 0.5) * 0.02,
+                            y: (Math.random() - 0.5) * 0.02,
+                            z: (Math.random() - 0.5) * 0.02
+                        },
+                        position: {
+                            x: positions[i * 3],
+                            y: positions[i * 3 + 1],
+                            z: positions[i * 3 + 2]
+                        }
+                    });
+                }
+                
+                particleGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+                particleGeometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+                particleGeometry.setAttribute('size', new THREE.BufferAttribute(sizes, 1));
+                
+                this.particleSystem = new THREE.Points(particleGeometry, particlesMaterial);
+                this.scene.add(this.particleSystem);
+            }
+            
+            animate() {
+                requestAnimationFrame(this.animate.bind(this));
+                
+                const positions = this.particleSystem.geometry.attributes.position.array;
+                
+                for (let i = 0; i < this.count; i++) {
+                    // Update positions based on velocity
+                    this.particles[i].position.x += this.particles[i].velocity.x;
+                    this.particles[i].position.y += this.particles[i].velocity.y;
+                    this.particles[i].position.z += this.particles[i].velocity.z;
+                    
+                    // Check bounds and reverse velocity if needed
+                    if (Math.abs(this.particles[i].position.x) > 25) {
+                        this.particles[i].velocity.x *= -1;
+                    }
+                    if (Math.abs(this.particles[i].position.y) > 25) {
+                        this.particles[i].velocity.y *= -1;
+                    }
+                    if (Math.abs(this.particles[i].position.z) > 25) {
+                        this.particles[i].velocity.z *= -1;
+                    }
+                    
+                    // Update buffer geometry
+                    positions[i * 3] = this.particles[i].position.x;
+                    positions[i * 3 + 1] = this.particles[i].position.y;
+                    positions[i * 3 + 2] = this.particles[i].position.z;
+                }
+                
+                this.particleSystem.geometry.attributes.position.needsUpdate = true;
+                this.particleSystem.rotation.y += 0.0005;
+                
+                this.renderer.render(this.scene, this.camera);
+            }
+            
+            onWindowResize() {
+                this.camera.aspect = window.innerWidth / window.innerHeight;
+                this.camera.updateProjectionMatrix();
+                this.renderer.setSize(window.innerWidth, window.innerHeight);
+            }
+        }
+        
+        // Initialisation de tous les graphiques et animations une fois que le DOM est chargé
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialiser le système de particules (si Three.js est chargé correctement)
+            if (typeof THREE !== 'undefined') {
+                try {
+                    const particleSystem = new ParticleSystem();
+                } catch (e) {
+                    console.error("Erreur lors de l'initialisation du système de particules:", e);
+                }
+            }
+            
+            // Animation des éléments au scroll
+            const fadeElements = document.querySelectorAll('.fade-in');
+            
+            const fadeInOnScroll = () => {
+                fadeElements.forEach(el => {
+                    const elementTop = el.getBoundingClientRect().top;
+                    const elementVisible = 150;
+                    
+                    if (elementTop < window.innerHeight - elementVisible) {
+                        el.classList.add('visible');
+                    }
+                });
+            };
+            
+            window.addEventListener('scroll', fadeInOnScroll);
+            fadeInOnScroll(); // Vérifier les éléments visibles au chargement
+            
+            // Animation pour compter les chiffres dans les cartes de statistiques
+            const countStats = () => {
+                const statValues = document.querySelectorAll('.stat-value');
+                
+                statValues.forEach(stat => {
+                    const targetValue = parseInt(stat.getAttribute('data-value'));
+                    const countDuration = 2500; // durée en ms
+                    const stepTime = 50; // intervalle entre chaque pas
+                    const totalSteps = countDuration / stepTime;
+                    const stepValue = targetValue / totalSteps;
+                    let currentValue = 0;
+                    let currentStep = 0;
+                    
+                    const counter = setInterval(() => {
+                        currentStep++;
+                        currentValue += stepValue;
+                        
+                        if (currentStep >= totalSteps) {
+                            clearInterval(counter);
+                            stat.textContent = targetValue + '%';
+                        } else {
+                            stat.textContent = Math.floor(currentValue) + '%';
+                        }
+                    }, stepTime);
+                });
+            };
+            
+            // Observer pour déclencher l'animation de comptage lorsque les stats sont visibles
+            const statsObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        countStats();
+                        statsObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+            
+            const statsSection = document.querySelector('.grid');
+            if (statsSection) {
+                statsObserver.observe(statsSection);
+            }
+            
+            // Curseur personnalisé
+            const cursor = document.querySelector('.cursor');
+            
+            if (window.innerWidth > 1024) {
+                document.addEventListener('mousemove', (e) => {
+                    cursor.style.left = e.clientX + 'px';
+                    cursor.style.top = e.clientY + 'px';
+                });
+                
+                const hoverElements = document.querySelectorAll('a, button, .card, .stat-card, .challenge-item, .nav-dot, h2, h3');
+                
+                hoverElements.forEach(element => {
+                    element.addEventListener('mouseenter', () => {
+                        cursor.classList.add('expand');
+                    });
+                    
+                    element.addEventListener('mouseleave', () => {
+                        cursor.classList.remove('expand');
+                    });
+                });
+            }
+            
+            // Barre de progression de lecture
+            const progressBar = document.querySelector('.progress-bar');
+            
+            window.addEventListener('scroll', () => {
+                const windowHeight = window.innerHeight;
+                const documentHeight = document.documentElement.scrollHeight - windowHeight;
+                const scrollTop = window.scrollY;
+                const progress = (scrollTop / documentHeight) * 100;
+                
+                progressBar.style.width = progress + '%';
+            });
+            
+            // Navigation par points latéraux
+            const navDots = document.querySelectorAll('.nav-dot');
+            
+            navDots.forEach(dot => {
+                dot.addEventListener('click', () => {
+                    const sectionId = dot.getAttribute('data-section');
+                    const section = document.getElementById(sectionId);
+                    
+                    if (section) {
+                        window.scrollTo({
+                            top: section.offsetTop - 100,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Mettre à jour le point actif lors du défilement
+            const sections = ['header', 'evolution', 'impact', 'strategies', 'challenges'];
+            
+            window.addEventListener('scroll', () => {
+                const scrollPosition = window.scrollY + 300;
+                
+                sections.forEach(sectionId => {
+                    const section = document.getElementById(sectionId);
+                    
+                    if (section) {
+                        const sectionTop = section.offsetTop;
+                        const sectionBottom = sectionTop + section.offsetHeight;
+                        
+                        if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+                            document.querySelectorAll('.nav-dot').forEach(dot => {
+                                dot.classList.remove('active');
+                            });
+                            
+                            document.querySelector(`.nav-dot[data-section="${sectionId}"]`).classList.add('active');
+                        }
+                    }
+                });
+            });
+            
+            // Bouton d'appel à l'action flottant
+            const floatingCta = document.querySelector('.floating-cta');
+            
+            if (floatingCta) {
+                floatingCta.addEventListener('click', () => {
+                    window.scrollTo({
+                        top: document.getElementById('challenges').offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                });
+            }
+            
+            // Initialisation des graphiques
+            // 1. Croissance du marché
+            const marketGrowthCtx = document.getElementById('marketGrowthChart').getContext('2d');
+            new Chart(marketGrowthCtx, {
+                type: 'line',
+                data: {
+                    labels: ['2010', '2012', '2014', '2016', '2018', '2020', '2022', '2024'],
+                    datasets: [{
+                        label: 'Ventes mondiales (millions)',
+                        data: [0.02, 0.12, 0.3, 0.7, 2.1, 3.2, 10.5, 14],
+                        borderColor: colors.primary,
+                        backgroundColor: colors.gradientPrimary(marketGrowthCtx),
+                        borderWidth: 3,
+                        tension: 0.4,
+                        fill: true,
+                        pointBackgroundColor: colors.primary,
+                        pointBorderColor: colors.dark,
+                        pointRadius: 6,
+                        pointHoverRadius: 8,
+                        pointHoverBackgroundColor: '#fff',
+                        pointHoverBorderColor: colors.primary,
+                        pointHoverBorderWidth: 3
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Croissance du marché mondial des véhicules électriques',
+                            font: {
+                                size: 18,
+                                weight: 'bold'
+                            },
+                            padding: 20
+                        },
+                        legend: {
+                            position: 'top'
+                        }
+                    },
+                    scales: {
+                        x: {
+                            grid: {
+                                color: 'rgba(255, 255, 255, 0.05)'
+                            }
+                        },
+                        y: {
+                            beginAtZero: true,
+                            grid: {
+                                color: 'rgba(255, 255, 255, 0.05)'
+                            },
+                            ticks: {
+                                callback: function(value) {
+                                    return value + ' M';
+                                }
+                            }
+                        }
+                    },
+                    interaction: {
+                        intersect: false,
+                        mode: 'index'
+                    },
+                    animation: {
+                        duration: 2000,
+                        easing: 'easeOutQuart'
+                    }
+                }
+            });
+            
+            // 2. Prix des batteries
+            const batteryPriceCtx = document.getElementById('batteryPriceChart').getContext('2d');
+            new Chart(batteryPriceCtx, {
+                type: 'line',
+                data: {
+                    labels: ['2010', '2012', '2014', '2016', '2018', '2020', '2022', '2024'],
+                    datasets: [{
+                        label: 'Prix moyen ($/kWh)',
+                        data: [1200, 850, 580, 350, 180, 135, 110, 95],
+                        borderColor: colors.secondary,
+                        backgroundColor: colors.gradientSecondary(batteryPriceCtx),
+                        borderWidth: 3,
+                        tension: 0.3,
+                        fill: true,
+                        pointBackgroundColor: colors.secondary,
+                        pointBorderColor: colors.dark,
+                        pointRadius: 6,
+                        pointHoverRadius: 8
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Évolution du prix des batteries lithium-ion',
+                            font: {
+                                size: 18,
+                                weight: 'bold'
+                            },
+                            padding: 20
+                        }
+                    },
+                    scales: {
+                        x: {
+                            grid: {
+                                color: 'rgba(255, 255, 255, 0.05)'
+                            }
+                        },
+                        y: {
+                            grid: {
+                                color: 'rgba(255, 255, 255, 0.05)'
+                            },
+                            ticks: {
+                                callback: function(value) {
+                                    return value + ' ;
+                                }
+                            }
+                        }
+                    },
+                    animation: {
+                        duration: 2000,
+                        easing: 'easeOutQuart'
+                    }
+                }
+            });
+            
+            // 3. Parts de marché
+            const marketShareCtx = document.getElementById('marketShareChart').getContext('2d');
+            new Chart(marketShareCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Tesla', 'BYD', 'Volkswagen', 'Stellantis', 'GM/LG', 'Hyundai/Kia', 'Autres'],
+                    datasets: [{
+                        data: [22, 15, 10, 8, 7, 6, 32],
+                        backgroundColor: [
+                            colors.primary,
+                            colors.secondary,
+                            colors.accent,
+                            '#34eba0',
+                            '#7d46ff',
+                            '#ff6a3b',
+                            '#1d2240'
+                        ],
+                        borderColor: colors.dark,
+                        borderWidth: 2,
+                        hoverOffset: 15
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Parts de marché mondiales des constructeurs (2024)',
+                            font: {
+                                size: 18,
+                                weight: 'bold'
+                            },
+                            padding: 20
+                        },
+                        legend: {
+                            position: 'right',
+                            labels: {
+                                font: {
+                                    size: 13
+                                },
+                                padding: 20
+                            }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return context.label + ': ' + context.raw + '%';
+                                }
+                            }
+                        }
+                    },
+                    cutout: '60%',
+                    animation: {
+                        animateRotate: true,
+                        animateScale: true,
+                        duration: 2000,
+                        easing: 'easeOutQuart'
+                    }
+                }
+            });
+            
+            // 4. Chaîne de valeur
+            const valueChainCtx = document.getElementById('valueChainChart').getContext('2d');
+            new Chart(valueChainCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Batterie', 'Moteur électrique', 'Électronique', 'Châssis', 'Intérieur', 'Autres'],
+                    datasets: [
+                        {
+                            label: 'Véhicule thermique (% de la valeur)',
+                            data: [0, 25, 15, 20, 15, 25],
+                            backgroundColor: colors.accent,
+                            borderWidth: 0,
+                            borderRadius: 5
+                        },
+                        {
+                            label: 'Véhicule électrique (% de la valeur)',
+                            data: [35, 10, 20, 15, 10, 10],
+                            backgroundColor: colors.primary,
+                            borderWidth: 0,
+                            borderRadius: 5
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Répartition de la valeur dans la chaîne de production',
+                            font: {
+                                size: 18,
+                                weight: 'bold'
+                            },
+                            padding: 20
+                        },
+                        legend: {
+                            position: 'top'
+                        }
+                    },
+                    scales: {
+                        x: {
+                            grid: {
+                                display: false
+                            }
+                        },
+                        y: {
+                            beginAtZero: true,
+                            grid: {
+                                color: 'rgba(255, 255, 255, 0.05)'
+                            },
+                            ticks: {
+                                callback: function(value) {
+                                    return value + '%';
+                                }
+                            }
+                        }
+                    },
+                    animation: {
+                        duration: 2000,
+                        easing: 'easeOutQuart'
+                    }
+                }
+            });
+            
+            // 5. Impact sur l'emploi
+            const employmentCtx = document.getElementById('employmentChart').getContext('2d');
+            new Chart(employmentCtx, {
+                type: 'radar',
+                data: {
+                    labels: [
+                        'Production véhicules',
+                        'Batteries',
+                        'Infrastructures',
+                        'Recyclage',
+                        'Services connectés',
+                        'R&D'
+                    ],
+                    datasets: [
+                        {
+                            label: '2020',
+                            data: [100, 40, 25, 15, 30, 45],
+                            backgroundColor: 'rgba(255, 58, 140, 0.2)',
+                            borderColor: colors.accent,
+                            pointBackgroundColor: colors.accent,
+                            pointBorderColor: colors.dark,
+                            borderWidth: 2
+                        },
+                        {
+                            label: '2025 (prévision)',
+                            data: [70, 80, 60, 40, 65, 75],
+                            backgroundColor: 'rgba(0, 245, 255, 0.2)',
+                            borderColor: colors.primary,
+                            pointBackgroundColor: colors.primary,
+                            pointBorderColor: colors.dark,
+                            borderWidth: 2
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Transformation des emplois dans l\'industrie automobile (base 100)',
+                            font: {
+                                size: 18,
+                                weight: 'bold'
+                            },
+                            padding: 20
+                        }
+                    },
+                    scales: {
+                        r: {
+                            min: 0,
+                            max: 100,
+                            ticks: {
+                                color: 'rgba(255, 255, 255, 0.7)',
+                                backdropColor: 'transparent',
+                                stepSize: 20
+                            },
+                            grid: {
+                                color: 'rgba(255, 255, 255, 0.1)'
+                            },
+                            angleLines: {
+                                color: 'rgba(255, 255, 255, 0.1)'
+                            },
+                            pointLabels: {
+                                font: {
+                                    size: 12,
+                                    weight: 'bold'
+                                }
+                            }
+                        }
+                    },
+                    animation: {
+                        duration: 2000,
+                        easing: 'easeOutQuart'
+                    }
+                }
+            });
+            
+            // 6. Incitations
+            const incentivesCtx = document.getElementById('incentivesChart').getContext('2d');
+            new Chart(incentivesCtx, {
+                type: 'polarArea',
+                data: {
+                    labels: ['Bonus à l\'achat', 'Primes à la conversion', 'Fiscalité avantageuse', 'Aides à l\'installation de bornes', 'ZFE'],
+                    datasets: [{
+                        data: [35, 25, 20, 15, 5],
+                        backgroundColor: [
+                            'rgba(0, 245, 255, 0.7)',
+                            'rgba(125, 17, 255, 0.7)',
+                            'rgba(255, 58, 140, 0.7)',
+                            'rgba(52, 235, 160, 0.7)',
+                            'rgba(125, 70, 255, 0.7)'
+                        ],
+                        borderWidth: 0
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Impact relatif des différentes incitations publiques',
+                            font: {
+                                size: 16,
+                                weight: 'bold'
+                            },
+                            padding: 20
+                        },
+                        legend: {
+                            position: 'right',
+                            align: 'center'
+                        }
+                    },
+                    scales: {
+                        r: {
+                            ticks: {
+                                display: false
+                            },
+                            grid: {
+                                color: 'rgba(255, 255, 255, 0.1)'
+                            }
+                        }
+                    },
+                    animation: {
+                        duration: 2000,
+                        easing: 'easeOutQuart'
+                    }
+                }
+            });
+            
+            // 7. Rentabilité
+            const profitabilityCtx = document.getElementById('profitabilityChart').getContext('2d');
+            new Chart(profitabilityCtx, {
+                type: 'line',
+                data: {
+                    labels: ['100k', '200k', '300k', '400k', '500k', '600k', '700k', '800k', '900k', '1M'],
+                    datasets: [
+                        {
+                            label: 'Véhicule thermique',
+                            data: [-8, -1, 3, 5, 7, 9, 10, 11, 12, 12],
+                            borderColor: colors.accent,
+                            backgroundColor: 'transparent',
+                            borderWidth: 3,
+                            tension: 0.3,
+                            borderDash: [5, 5]
+                        },
+                        {
+                            label: 'Véhicule électrique',
+                            data: [-15, -10, -7, -4, -1, 2, 5, 7, 9, 10],
+                            borderColor: colors.primary,
+                            backgroundColor: 'transparent',
+                            borderWidth: 3,
+                            tension: 0.3
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Marge opérationnelle (%) selon le volume de production annuel',
+                            font: {
+                                size: 18,
+                                weight: 'bold'
+                            },
+                            padding: 20
+                        }
+                    },
+                    scales: {
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Volume de production annuel (unités)',
+                                color: 'rgba(255, 255, 255, 0.7)'
+                            },
+                            grid: {
+                                color: 'rgba(255, 255, 255, 0.05)'
+                            }
+                        },
+                        y: {
+                            title: {
+                                display: true,
+                                text: 'Marge opérationnelle (%)',
+                                color: 'rgba(255, 255, 255, 0.7)'
+                            },
+                            grid: {
+                                color: 'rgba(255, 255, 255, 0.05)'
+                            },
+                            ticks: {
+                                callback: function(value) {
+                                    return value + '%';
+                                }
+                            }
+                        }
+                    },
+                    interaction: {
+                        intersect: false,
+                        mode: 'index'
+                    },
+                    animation: {
+                        duration: 2000,
+                        easing: 'easeOutQuart'
+                    }
+                }
+            });
+            
+            // 8. Évolution technologique
+            const techEvolutionCtx = document.getElementById('techEvolutionChart').getContext('2d');
+            new Chart(techEvolutionCtx, {
+                type: 'radar',
+                data: {
+                    labels: ['Coût', 'Autonomie', 'Temps de recharge', 'Durée de vie', 'Densité énergétique', 'Recyclabilité'],
+                    datasets: [{
+                        label: '2015',
+                        data: [20, 30, 25, 65, 30, 40],
+                        backgroundColor: 'rgba(255, 58, 140, 0.2)',
+                        borderColor: colors.accent,
+                        pointBackgroundColor: colors.accent,
+                        pointBorderColor: colors.dark,
+                        pointHoverBorderColor: colors.dark,
+                        pointHoverBackgroundColor: colors.accent,
+                        borderWidth: 2,
+                        pointRadius: 4,
+                        pointHoverRadius: 6
+                    }, {
+                        label: '2024',
+                        data: [60, 70, 60, 80, 75, 65],
+                        backgroundColor: 'rgba(0, 245, 255, 0.2)',
+                        borderColor: colors.primary,
+                        pointBackgroundColor: colors.primary,
+                        pointBorderColor: colors.dark,
+                        pointHoverBorderColor: colors.dark,
+                        pointHoverBackgroundColor: colors.primary,
+                        borderWidth: 2,
+                        pointRadius: 4,
+                        pointHoverRadius: 6
+                    }, {
+                        label: '2030 (prévision)',
+                        data: [85, 90, 85, 90, 90, 95],
+                        backgroundColor: 'rgba(125, 17, 255, 0.2)',
+                        borderColor: colors.secondary,
+                        pointBackgroundColor: colors.secondary,
+                        pointBorderColor: colors.dark,
+                        pointHoverBorderColor: colors.dark,
+                        pointHoverBackgroundColor: colors.secondary,
+                        borderWidth: 2,
+                        pointRadius: 4,
+                        pointHoverRadius: 6,
+                        borderDash: [5, 5]
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Évolution des performances des batteries (indice 100 = optimal)',
+                            font: {
+                                size: 18,
+                                weight: 'bold'
+                            },
+                            padding: 20
+                        },
+                        legend: {
+                            position: 'top',
+                            labels: {
+                                padding: 20,
+                                font: {
+                                    size: 14
+                                }
+                            }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return context.dataset.label + ': ' + context.raw + '/100';
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        r: {
+                            angleLines: {
+                                color: 'rgba(255, 255, 255, 0.1)'
+                            },
+                            grid: {
+                                color: 'rgba(255, 255, 255, 0.1)'
+                            },
+                            pointLabels: {
+                                font: {
+                                    size: 14,
+                                    weight: 'bold'
+                                }
+                            },
+                            suggestedMin: 0,
+                            suggestedMax: 100,
+                            ticks: {
+                                stepSize: 20,
+                                backdropColor: 'transparent'
+                            }
+                        }
+                    },
+                    animation: {
+                        duration: 2000,
+                        easing: 'easeOutQuart'
+                    }
+                }
+            });
+            
+        });
+    </script>
+</body>
+</html>

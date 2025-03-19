@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,7 +23,7 @@
             --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
             --gradient-reverse: linear-gradient(135deg, var(--secondary), var(--primary));
         }
-        
+
         * {
             margin: 0;
             padding: 0;
@@ -30,18 +31,18 @@
             font-family: 'Segoe UI', 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
             scroll-behavior: smooth;
         }
-        
+
         body {
             line-height: 1.6;
             color: var(--text-light);
             background-color: var(--darker);
-            background-image: 
+            background-image:
                 radial-gradient(circle at 10% 20%, rgba(0, 245, 255, 0.03) 0%, transparent 30%),
                 radial-gradient(circle at 90% 80%, rgba(125, 17, 255, 0.03) 0%, transparent 30%);
             background-attachment: fixed;
             overflow-x: hidden;
         }
-        
+
         #particles-container {
             position: fixed;
             top: 0;
@@ -51,19 +52,19 @@
             z-index: -1;
             opacity: 0.6;
         }
-        
+
         header {
             background: var(--dark);
             padding: 4rem 0;
             position: relative;
             overflow: hidden;
         }
-        
+
         .header-content {
             position: relative;
             z-index: 2;
         }
-        
+
         .header-bg {
             position: absolute;
             top: 0;
@@ -71,11 +72,11 @@
             width: 100%;
             height: 100%;
             z-index: 0;
-            background: 
+            background:
                 linear-gradient(135deg, rgba(0, 15, 40, 0.8), rgba(0, 10, 30, 0.9)),
                 url('https://api.placeholder/1920/1080') center/cover no-repeat;
         }
-        
+
         .glowing-line {
             position: absolute;
             bottom: 0;
@@ -85,7 +86,7 @@
             background: var(--primary);
             box-shadow: var(--neon-glow);
         }
-        
+
         .container {
             width: 90%;
             max-width: 1300px;
@@ -94,7 +95,7 @@
             position: relative;
             z-index: 1;
         }
-        
+
         h1 {
             font-size: 4rem;
             font-weight: 800;
@@ -108,13 +109,21 @@
             letter-spacing: 1px;
             animation: textShine 3s linear infinite;
         }
-        
+
         @keyframes textShine {
-            0% { filter: drop-shadow(0 0 2px var(--primary)) drop-shadow(0 0 5px rgba(0, 245, 255, 0.3)); }
-            50% { filter: drop-shadow(0 0 5px var(--primary)) drop-shadow(0 0 10px rgba(0, 245, 255, 0.5)); }
-            100% { filter: drop-shadow(0 0 2px var(--primary)) drop-shadow(0 0 5px rgba(0, 245, 255, 0.3)); }
+            0% {
+                filter: drop-shadow(0 0 2px var(--primary)) drop-shadow(0 0 5px rgba(0, 245, 255, 0.3));
+            }
+
+            50% {
+                filter: drop-shadow(0 0 5px var(--primary)) drop-shadow(0 0 10px rgba(0, 245, 255, 0.5));
+            }
+
+            100% {
+                filter: drop-shadow(0 0 2px var(--primary)) drop-shadow(0 0 5px rgba(0, 245, 255, 0.3));
+            }
         }
-        
+
         header p {
             font-size: 1.7rem;
             opacity: 0.9;
@@ -122,7 +131,7 @@
             margin: 1.5rem auto;
             letter-spacing: 1px;
         }
-        
+
         h2 {
             font-size: 2.7rem;
             color: var(--primary);
@@ -133,7 +142,7 @@
             text-transform: uppercase;
             letter-spacing: 2px;
         }
-        
+
         h2::after {
             content: '';
             position: absolute;
@@ -145,7 +154,7 @@
             border-radius: 2px;
             box-shadow: var(--neon-glow);
         }
-        
+
         h3 {
             font-size: 2rem;
             color: var(--light);
@@ -154,7 +163,7 @@
             position: relative;
             display: inline-block;
         }
-        
+
         h3::after {
             content: '';
             position: absolute;
@@ -165,14 +174,14 @@
             background: var(--primary);
             box-shadow: var(--neon-glow);
         }
-        
+
         p {
             margin-bottom: 1.5rem;
             font-size: 1.15rem;
             line-height: 1.8;
             color: rgba(241, 247, 255, 0.9);
         }
-        
+
         .card {
             background: linear-gradient(135deg, rgba(15, 23, 42, 0.7), rgba(10, 15, 30, 0.85));
             border-radius: 16px;
@@ -185,7 +194,7 @@
             overflow: hidden;
             backdrop-filter: blur(10px);
         }
-        
+
         .card::before {
             content: '';
             position: absolute;
@@ -196,12 +205,12 @@
             background: var(--gradient);
             box-shadow: var(--neon-glow);
         }
-        
+
         .card:hover {
             transform: translateY(-8px);
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
         }
-        
+
         .card::after {
             content: '';
             position: absolute;
@@ -214,11 +223,11 @@
             opacity: 0;
             transition: opacity 0.5s ease;
         }
-        
+
         .card:hover::after {
             opacity: 0.7;
         }
-        
+
         .chart-container {
             height: 480px;
             margin: 3rem 0;
@@ -230,7 +239,7 @@
             border: 1px solid rgba(0, 245, 255, 0.1);
             overflow: hidden;
         }
-        
+
         .chart-container::before {
             content: '';
             position: absolute;
@@ -241,14 +250,14 @@
             background: radial-gradient(circle at center, rgba(0, 245, 255, 0.03), transparent 60%);
             z-index: 0;
         }
-        
+
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2.5rem;
             margin: 3.5rem 0;
         }
-        
+
         .stat-card {
             background: linear-gradient(135deg, rgba(15, 23, 42, 0.7), rgba(10, 15, 30, 0.85));
             border-radius: 16px;
@@ -261,7 +270,7 @@
             border: 1px solid rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(10px);
         }
-        
+
         .stat-card::before {
             content: '';
             position: absolute;
@@ -272,12 +281,12 @@
             background: var(--gradient);
             box-shadow: var(--neon-glow);
         }
-        
+
         .stat-card:hover {
             transform: translateY(-12px) scale(1.03);
             box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
         }
-        
+
         .stat-value {
             font-size: 4rem;
             font-weight: 800;
@@ -290,18 +299,18 @@
             filter: drop-shadow(0 0 5px rgba(0, 245, 255, 0.5));
             transition: filter 0.3s ease;
         }
-        
+
         .stat-card:hover .stat-value {
             filter: drop-shadow(0 0 8px rgba(0, 245, 255, 0.7));
         }
-        
+
         .stat-label {
             font-size: 1.3rem;
             color: var(--light);
             font-weight: 600;
             letter-spacing: 0.5px;
         }
-        
+
         .highlight {
             border-radius: 14px;
             background: linear-gradient(135deg, rgba(0, 245, 255, 0.05), rgba(125, 17, 255, 0.05));
@@ -312,7 +321,7 @@
             position: relative;
             box-shadow: var(--neon-glow);
         }
-        
+
         .highlight::before {
             content: '"';
             position: absolute;
@@ -322,7 +331,7 @@
             color: rgba(0, 245, 255, 0.3);
             font-family: serif;
         }
-        
+
         .highlight p {
             margin: 0;
             padding-left: 35px;
@@ -339,13 +348,14 @@
             background: rgba(10, 11, 21, 0.7);
             border: 1px solid rgba(255, 255, 255, 0.05);
         }
-        
-        th, td {
+
+        th,
+        td {
             padding: 1.2rem 1.5rem;
             text-align: left;
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
-        
+
         th {
             background: var(--dark);
             color: var(--primary);
@@ -354,7 +364,7 @@
             font-size: 0.95rem;
             letter-spacing: 1px;
         }
-        
+
         tr:nth-child(even) {
             background-color: rgba(0, 245, 255, 0.03);
         }
@@ -362,7 +372,7 @@
         tr:hover {
             background-color: rgba(0, 245, 255, 0.07);
         }
-        
+
         td {
             transition: all 0.3s ease;
         }
@@ -376,7 +386,7 @@
             position: relative;
             overflow: hidden;
         }
-        
+
         footer::before {
             content: '';
             position: absolute;
@@ -408,12 +418,12 @@
             overflow: hidden;
             border: 1px solid rgba(255, 255, 255, 0.05);
         }
-        
+
         .challenge-item:hover {
             transform: translateY(-10px);
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15), 0 0 15px rgba(255, 58, 140, 0.2);
         }
-        
+
         .challenge-item::after {
             content: '';
             position: absolute;
@@ -426,11 +436,11 @@
             opacity: 0;
             transition: opacity 0.5s ease;
         }
-        
+
         .challenge-item:hover::after {
             opacity: 0.7;
         }
-        
+
         .challenge-item h4 {
             font-size: 1.4rem;
             color: var(--accent);
@@ -438,7 +448,7 @@
             position: relative;
             display: inline-block;
         }
-        
+
         .challenge-item h4::after {
             content: '';
             position: absolute;
@@ -460,18 +470,18 @@
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
             border: 1px solid rgba(0, 245, 255, 0.1);
         }
-        
+
         ul {
             margin-left: 2rem;
             margin-bottom: 2.5rem;
         }
-        
+
         li {
             margin-bottom: 1rem;
             position: relative;
             padding-left: 10px;
         }
-        
+
         li::before {
             content: '';
             position: absolute;
@@ -483,7 +493,7 @@
             background: var(--primary);
             box-shadow: var(--neon-glow);
         }
-        
+
         /* Animations de voiture plus sophistiquées */
         .car-animation-container {
             position: absolute;
@@ -496,15 +506,29 @@
             z-index: 3;
             animation: floatCar 8s ease-in-out infinite;
         }
-        
+
         @keyframes floatCar {
-            0% { transform: translateY(0px) rotateZ(0deg); }
-            25% { transform: translateY(-15px) rotateZ(0.5deg); }
-            50% { transform: translateY(-25px) rotateZ(-0.5deg); }
-            75% { transform: translateY(-10px) rotateZ(0.3deg); }
-            100% { transform: translateY(0px) rotateZ(0deg); }
+            0% {
+                transform: translateY(0px) rotateZ(0deg);
+            }
+
+            25% {
+                transform: translateY(-15px) rotateZ(0.5deg);
+            }
+
+            50% {
+                transform: translateY(-25px) rotateZ(-0.5deg);
+            }
+
+            75% {
+                transform: translateY(-10px) rotateZ(0.3deg);
+            }
+
+            100% {
+                transform: translateY(0px) rotateZ(0deg);
+            }
         }
-        
+
         .car-animation {
             position: absolute;
             width: 100%;
@@ -512,12 +536,17 @@
             transform-style: preserve-3d;
             animation: rotateCar 20s linear infinite;
         }
-        
+
         @keyframes rotateCar {
-            0% { transform: rotateY(0deg); }
-            100% { transform: rotateY(360deg); }
+            0% {
+                transform: rotateY(0deg);
+            }
+
+            100% {
+                transform: rotateY(360deg);
+            }
         }
-        
+
         .car-body {
             position: absolute;
             width: 200px;
@@ -531,7 +560,7 @@
             backdrop-filter: blur(5px);
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
-        
+
         .car-top {
             position: absolute;
             width: 120px;
@@ -543,7 +572,7 @@
             border-radius: 10px 10px 0 0;
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
-        
+
         .car-light {
             position: absolute;
             width: 10px;
@@ -553,24 +582,31 @@
             box-shadow: 0 0 10px var(--primary), 0 0 20px var(--primary);
             animation: pulseLights 2s ease-in-out infinite alternate;
         }
-        
+
         .light-front {
             bottom: 10%;
             left: 10%;
         }
-        
+
         .light-back {
             bottom: 10%;
             right: 10%;
             background: #ff3a3a;
             box-shadow: 0 0 10px #ff3a3a, 0 0 20px #ff3a3a;
         }
-        
+
         @keyframes pulseLights {
-            0% { opacity: 0.7; box-shadow: 0 0 5px currentColor, 0 0 10px currentColor; }
-            100% { opacity: 1; box-shadow: 0 0 15px currentColor, 0 0 30px currentColor; }
+            0% {
+                opacity: 0.7;
+                box-shadow: 0 0 5px currentColor, 0 0 10px currentColor;
+            }
+
+            100% {
+                opacity: 1;
+                box-shadow: 0 0 15px currentColor, 0 0 30px currentColor;
+            }
         }
-        
+
         .wheel {
             position: absolute;
             width: 25px;
@@ -582,20 +618,25 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.5) inset, 0 0 5px var(--primary);
             animation: rotateWheel 2s linear infinite;
         }
-        
+
         .wheel-left {
             left: 30px;
         }
-        
+
         .wheel-right {
             right: 30px;
         }
-        
+
         @keyframes rotateWheel {
-            0% { transform: rotateZ(0deg); }
-            100% { transform: rotateZ(360deg); }
+            0% {
+                transform: rotateZ(0deg);
+            }
+
+            100% {
+                transform: rotateZ(360deg);
+            }
         }
-        
+
         /* Bouton interactif flottant d'appel à l'action */
         .floating-cta {
             position: fixed;
@@ -617,28 +658,36 @@
             z-index: 100;
             border: 1px solid rgba(0, 245, 255, 0.3);
         }
-        
+
         .floating-cta:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), 0 0 0 3px rgba(0, 245, 255, 0.5);
             background: var(--gradient);
         }
-        
+
         .floating-cta span {
             display: inline-block;
             animation: pulse 2s infinite;
         }
-        
+
         @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-            100% { transform: scale(1); }
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.1);
+            }
+
+            100% {
+                transform: scale(1);
+            }
         }
-        
+
         .floating-cta .icon {
             font-size: 1.2rem;
         }
-        
+
         /* Section de navigation côté */
         .side-nav {
             position: fixed;
@@ -650,7 +699,7 @@
             gap: 15px;
             z-index: 100;
         }
-        
+
         .nav-dot {
             width: 12px;
             height: 12px;
@@ -660,7 +709,7 @@
             transition: all 0.3s ease;
             position: relative;
         }
-        
+
         .nav-dot::before {
             content: '';
             position: absolute;
@@ -672,13 +721,14 @@
             transform: scale(0);
             transition: all 0.3s ease;
         }
-        
-        .nav-dot:hover::before, .nav-dot.active::before {
+
+        .nav-dot:hover::before,
+        .nav-dot.active::before {
             opacity: 1;
             transform: scale(1);
             box-shadow: 0 0 10px var(--primary);
         }
-        
+
         .nav-tooltip {
             position: absolute;
             right: 25px;
@@ -695,12 +745,12 @@
             white-space: nowrap;
             border: 1px solid rgba(0, 245, 255, 0.3);
         }
-        
+
         .nav-dot:hover .nav-tooltip {
             opacity: 1;
             transform: translateX(0);
         }
-        
+
         /* Curseur personnalisé */
         .cursor {
             position: fixed;
@@ -715,7 +765,7 @@
             transition: transform 0.1s ease;
             display: none;
         }
-        
+
         .cursor::after {
             content: '';
             position: absolute;
@@ -727,24 +777,29 @@
             left: 50%;
             transform: translate(-50%, -50%);
         }
-        
+
         /* Desactivé pour mobile */
         @media (min-width: 1024px) {
             .cursor {
                 display: block;
             }
         }
-        
+
         .expand {
             transform: translate(-50%, -50%) scale(2);
             background: rgba(0, 245, 255, 0.1);
         }
-        
+
         /* Effets de survol */
-        a, button, .card, .stat-card, .challenge-item, .nav-dot {
+        a,
+        button,
+        .card,
+        .stat-card,
+        .challenge-item,
+        .nav-dot {
             cursor: none;
         }
-        
+
         /* Barre de progression de lecture */
         .progress-bar {
             position: fixed;
@@ -756,68 +811,322 @@
             width: 0%;
             box-shadow: var(--neon-glow);
         }
-        
+
         /* Responsive adjustments */
         @media (max-width: 768px) {
             h1 {
                 font-size: 2.8rem;
             }
-            
+
             h2 {
                 font-size: 2.2rem;
             }
-            
+
             h3 {
                 font-size: 1.7rem;
             }
-            
-            .card, .stat-card, .challenge-item {
+
+            .card,
+            .stat-card,
+            .challenge-item {
                 padding: 2rem;
             }
-            
+
             .chart-container {
                 height: 400px;
             }
-            
-            .side-nav, .floating-cta {
+
+            .side-nav,
+            .floating-cta {
                 display: none;
             }
-            
+
             .car-animation-container {
                 transform: scale(0.7);
                 right: 0;
                 bottom: 10%;
             }
         }
-        
+
         /* Animation pour les éléments au scroll */
         .fade-in {
             opacity: 0;
             transform: translateY(30px);
             transition: opacity 0.8s ease, transform 0.8s ease;
         }
-        
+
         .fade-in.visible {
             opacity: 1;
             transform: translateY(0);
         }
-        
+
         /* Pour les chiffres qui comptent */
         .counting-number {
             display: inline-block;
         }
+
+        /* Styles pour les nouvelles sections sur les batteries et l'impact écologique */
+        .battery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .battery-card {
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.7), rgba(10, 15, 30, 0.85));
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            border: 1px solid rgba(0, 245, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .battery-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            border-color: rgba(0, 245, 255, 0.3);
+        }
+
+        .battery-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .battery-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--light);
+            margin-bottom: 0.5rem;
+        }
+
+        .battery-label {
+            font-size: 0.9rem;
+            color: rgba(241, 247, 255, 0.7);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .eco-comparison {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .eco-car {
+            flex: 1;
+            min-width: 300px;
+            position: relative;
+            padding: 2rem;
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.7), rgba(10, 15, 30, 0.85));
+            border-radius: 14px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .eco-car.electric {
+            border-top: 3px solid var(--primary);
+        }
+
+        .eco-car.thermal {
+            border-top: 3px solid var(--accent);
+        }
+
+        .eco-car-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .eco-car.electric .eco-car-icon {
+            color: var(--primary);
+        }
+
+        .eco-car.thermal .eco-car-icon {
+            color: var(--accent);
+        }
+
+        .eco-car h4 {
+            font-size: 1.4rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .eco-car.electric h4 {
+            color: var(--primary);
+        }
+
+        .eco-car.thermal h4 {
+            color: var(--accent);
+        }
+
+        .eco-car h4::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 2px;
+        }
+
+        .eco-car.electric h4::after {
+            background: var(--primary);
+            box-shadow: var(--neon-glow);
+        }
+
+        .eco-car.thermal h4::after {
+            background: var(--accent);
+            box-shadow: 0 0 5px rgba(255, 58, 140, 0.7);
+        }
+
+        .eco-milestone {
+            position: relative;
+            width: 100%;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
+            margin: 2rem 0;
+            overflow: hidden;
+        }
+
+        .eco-progress {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            border-radius: 3px;
+            transition: width 1.5s ease-in-out;
+        }
+
+        .eco-car.electric .eco-progress {
+            background: var(--primary);
+            box-shadow: 0 0 10px rgba(0, 245, 255, 0.5);
+            width: 0;
+        }
+
+        .eco-car.thermal .eco-progress {
+            background: var(--accent);
+            box-shadow: 0 0 10px rgba(255, 58, 140, 0.5);
+            width: 0;
+        }
+
+        .eco-markers {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            margin-top: 0.5rem;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.85rem;
+        }
+
+        .timeline {
+            position: relative;
+            width: 100%;
+            padding: 2rem 0;
+            margin: 3rem 0;
+        }
+
+        .timeline-line {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 4px;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateX(-50%);
+        }
+
+        .timeline-event {
+            position: relative;
+            margin-bottom: 3rem;
+            width: 100%;
+            display: flex;
+        }
+
+        .timeline-event:nth-child(odd) {
+            justify-content: flex-start;
+        }
+
+        .timeline-event:nth-child(even) {
+            justify-content: flex-end;
+        }
+
+        .timeline-content {
+            width: 45%;
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.7), rgba(10, 15, 30, 0.85));
+            border-radius: 14px;
+            padding: 1.5rem;
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .timeline-event:nth-child(odd) .timeline-content::after,
+        .timeline-event:nth-child(even) .timeline-content::after {
+            content: '';
+            position: absolute;
+            top: 30px;
+            width: 20px;
+            height: 2px;
+        }
+
+        .timeline-event:nth-child(odd) .timeline-content::after {
+            right: -20px;
+            background: linear-gradient(to right, var(--primary), transparent);
+        }
+
+        .timeline-event:nth-child(even) .timeline-content::after {
+            left: -20px;
+            background: linear-gradient(to left, var(--primary), transparent);
+        }
+
+        .timeline-marker {
+            position: absolute;
+            top: 30px;
+            left: 50%;
+            width: 20px;
+            height: 20px;
+            background: var(--dark);
+            border: 3px solid var(--primary);
+            border-radius: 50%;
+            transform: translateX(-50%);
+            box-shadow: var(--neon-glow);
+            z-index: 2;
+        }
+
+        .timeline-year {
+            position: absolute;
+            top: 55px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-weight: 600;
+            color: var(--primary);
+            text-shadow: var(--neon-glow);
+            font-size: 0.9rem;
+        }
+
+        .timeline-title {
+            font-size: 1.2rem;
+            color: var(--light);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
     </style>
 </head>
+
 <body>
     <!-- Progress bar -->
     <div class="progress-bar"></div>
-    
+
     <!-- Custom cursor -->
     <div class="cursor"></div>
-    
+
     <!-- Particles container -->
     <div id="particles-container"></div>
-    
+
     <!-- Side navigation -->
     <div class="side-nav">
         <div class="nav-dot active" data-section="header">
@@ -829,6 +1138,9 @@
         <div class="nav-dot" data-section="impact">
             <span class="nav-tooltip">Impact économique</span>
         </div>
+        <div class="nav-dot" data-section="ecologique">
+            <span class="nav-tooltip">Impact écologique</span>
+        </div>
         <div class="nav-dot" data-section="strategies">
             <span class="nav-tooltip">Stratégies</span>
         </div>
@@ -836,7 +1148,7 @@
             <span class="nav-tooltip">Défis et perspectives</span>
         </div>
     </div>
-    
+
     <!-- Floating CTA -->
     <button class="floating-cta">
         <span class="icon">⚡</span>
@@ -849,7 +1161,7 @@
         <div class="container header-content">
             <h1>Les Voitures Électriques</h1>
             <p>Enjeux et Perspectives Économiques</p>
-            
+
             <div class="car-animation-container">
                 <div class="car-animation">
                     <div class="car-body"></div>
@@ -866,19 +1178,27 @@
     <div class="container">
         <div class="card fade-in">
             <h2>Introduction</h2>
-            <p>La transition vers la mobilité électrique représente l'un des bouleversements économiques majeurs du XXIe siècle. Face aux défis environnementaux et aux préoccupations grandissantes concernant le changement climatique, les voitures électriques sont devenues un élément central des stratégies de décarbonation dans le secteur des transports.</p>
-            <p>Cette présentation analyse les enjeux économiques liés au développement des voitures électriques, en examinant comment cette transition impacte l'ensemble des acteurs économiques – constructeurs automobiles, consommateurs, États et collectivités – tout en créant de nouvelles opportunités et de nouveaux défis.</p>
+            <p>La transition vers la mobilité électrique représente l'un des bouleversements économiques majeurs du XXIe
+                siècle. Face aux défis environnementaux et aux préoccupations grandissantes concernant le changement
+                climatique, les voitures électriques sont devenues un élément central des stratégies de décarbonation
+                dans le secteur des transports.</p>
+            <p>Cette présentation analyse les enjeux économiques liés au développement des voitures électriques, en
+                examinant comment cette transition impacte l'ensemble des acteurs économiques – constructeurs
+                automobiles, consommateurs, États et collectivités – tout en créant de nouvelles opportunités et de
+                nouveaux défis.</p>
         </div>
 
         <h2 id="evolution" class="fade-in">I. Évolution du marché des voitures électriques</h2>
-        
+
         <div class="card fade-in">
             <h3>Croissance du marché mondial des véhicules électriques</h3>
             <div class="chart-container">
                 <canvas id="marketGrowthChart"></canvas>
             </div>
             <div class="highlight">
-                <p>En 2010, moins de 20 000 véhicules électriques étaient vendus dans le monde ; en 2024, ce chiffre dépasse les 14 millions d'unités annuelles, représentant près de 18% du marché automobile mondial.</p>
+                <p>En 2010, moins de 20 000 véhicules électriques étaient vendus dans le monde ; en 2024, ce chiffre
+                    dépasse les 14 millions d'unités annuelles, représentant près de 18% du marché automobile mondial.
+                </p>
             </div>
         </div>
 
@@ -887,7 +1207,78 @@
             <div class="chart-container">
                 <canvas id="batteryPriceChart"></canvas>
             </div>
-            <p>L'amélioration des technologies de batteries a entraîné une réduction significative des coûts de plus de 90% en une décennie, rendant les véhicules électriques de plus en plus compétitifs face aux véhicules thermiques.</p>
+            <p>L'amélioration des technologies de batteries a entraîné une réduction significative des coûts de plus de
+                90% en une décennie, rendant les véhicules électriques de plus en plus compétitifs face aux véhicules
+                thermiques.</p>
+        </div>
+
+        <!-- NOUVELLE SECTION: Détails sur les batteries -->
+        <div class="card fade-in">
+            <h3>Prix et capacités actuelles des batteries</h3>
+            <p>Le prix des batteries lithium-ion représente environ 30 à 40% du coût total d'un véhicule électrique. En
+                2024, les caractéristiques typiques des batteries varient selon les segments de véhicules:</p>
+
+            <div class="battery-grid">
+                <div class="battery-card">
+                    <div class="battery-icon">💰</div>
+                    <div class="battery-value">95 $/kWh</div>
+                    <div class="battery-label">Prix moyen actuel</div>
+                </div>
+                <div class="battery-card">
+                    <div class="battery-icon">⚡</div>
+                    <div class="battery-value">40-80 kWh</div>
+                    <div class="battery-label">Capacité véhicules citadins/compacts</div>
+                </div>
+                <div class="battery-card">
+                    <div class="battery-icon">🔋</div>
+                    <div class="battery-value">80-120 kWh</div>
+                    <div class="battery-label">Capacité véhicules premium/SUV</div>
+                </div>
+                <div class="battery-card">
+                    <div class="battery-icon">🚗</div>
+                    <div class="battery-value">3 800-9 500 €</div>
+                    <div class="battery-label">Coût batterie par véhicule</div>
+                </div>
+            </div>
+
+            <table>
+                <tr>
+                    <th>Segment</th>
+                    <th>Capacité typique</th>
+                    <th>Prix batterie (2024)</th>
+                    <th>Autonomie moyenne</th>
+                </tr>
+                <tr>
+                    <td>Citadine</td>
+                    <td>40-50 kWh</td>
+                    <td>3 800-4 750 €</td>
+                    <td>300-350 km</td>
+                </tr>
+                <tr>
+                    <td>Compacte</td>
+                    <td>60-70 kWh</td>
+                    <td>5 700-6 650 €</td>
+                    <td>400-450 km</td>
+                </tr>
+                <tr>
+                    <td>Berline</td>
+                    <td>75-85 kWh</td>
+                    <td>7 125-8 075 €</td>
+                    <td>450-550 km</td>
+                </tr>
+                <tr>
+                    <td>SUV/Premium</td>
+                    <td>90-100 kWh</td>
+                    <td>8 550-9 500 €</td>
+                    <td>500-650 km</td>
+                </tr>
+            </table>
+
+            <div class="highlight">
+                <p>La densité énergétique des batteries a doublé depuis 2010, atteignant aujourd'hui environ 300 Wh/kg,
+                    permettant des autonomies comparables aux véhicules thermiques tout en réduisant l'encombrement et
+                    le poids.</p>
+            </div>
         </div>
 
         <div class="grid fade-in">
@@ -907,8 +1298,9 @@
 
         <div class="card fade-in">
             <h3>Structure actuelle du marché</h3>
-            <p>Le marché des véhicules électriques présente aujourd'hui une structure oligopolistique en pleine mutation avec trois principaux types d'acteurs:</p>
-            
+            <p>Le marché des véhicules électriques présente aujourd'hui une structure oligopolistique en pleine mutation
+                avec trois principaux types d'acteurs:</p>
+
             <table>
                 <tr>
                     <th>Type d'acteurs</th>
@@ -918,55 +1310,66 @@
                 <tr>
                     <td>Pure players</td>
                     <td>Tesla, Rivian, Lucid</td>
-                    <td>Entreprises exclusivement dédiées aux véhicules électriques, avec un avantage concurrentiel initial en termes d'image et de technologie</td>
+                    <td>Entreprises exclusivement dédiées aux véhicules électriques, avec un avantage concurrentiel
+                        initial en termes d'image et de technologie</td>
                 </tr>
                 <tr>
                     <td>Constructeurs traditionnels</td>
                     <td>Volkswagen, Stellantis, Renault</td>
-                    <td>Ont massivement investi dans l'électrification de leurs gammes, parfois en créant des filiales dédiées</td>
+                    <td>Ont massivement investi dans l'électrification de leurs gammes, parfois en créant des filiales
+                        dédiées</td>
                 </tr>
                 <tr>
                     <td>Nouveaux entrants</td>
                     <td>BYD, NIO, SAIC</td>
-                    <td>Principalement des constructeurs chinois qui profitent de leur maîtrise de la chaîne d'approvisionnement des batteries</td>
+                    <td>Principalement des constructeurs chinois qui profitent de leur maîtrise de la chaîne
+                        d'approvisionnement des batteries</td>
                 </tr>
             </table>
-            
+
             <div class="chart-container">
                 <canvas id="marketShareChart"></canvas>
             </div>
         </div>
 
         <h2 id="impact" class="fade-in">II. Impact économique de la transition</h2>
-        
+
         <div class="card fade-in">
             <h3>Restructuration de la chaîne de valeur automobile</h3>
-            
+
             <div class="chart-container">
                 <canvas id="valueChainChart"></canvas>
             </div>
-            
+
             <div class="highlight">
-                <p>Dans un véhicule thermique, le moteur et la transmission représentent environ 40% de la valeur ajoutée. Dans un véhicule électrique, la batterie devient le composant central, représentant entre 30 et 40% du coût total du véhicule.</p>
+                <p>Dans un véhicule thermique, le moteur et la transmission représentent environ 40% de la valeur
+                    ajoutée. Dans un véhicule électrique, la batterie devient le composant central, représentant entre
+                    30 et 40% du coût total du véhicule.</p>
             </div>
-            
+
             <p>Cette transformation a plusieurs conséquences économiques:</p>
             <ul>
-                <li>Déplacement de la valeur ajoutée vers l'amont (producteurs de batteries) et vers l'aval (services de recharge)</li>
-                <li>Simplification de la production: un véhicule électrique comporte environ 200 pièces mobiles, contre 2 000 pour un véhicule thermique</li>
-                <li>Émergence de "gigafactories" de batteries nécessitant des investissements massifs (plus de 515 milliards d'euros annoncés au niveau mondial entre 2022 et 2030)</li>
-                <li>Tendance des constructeurs à internaliser la production de batteries et de composants stratégiques</li>
+                <li>Déplacement de la valeur ajoutée vers l'amont (producteurs de batteries) et vers l'aval (services de
+                    recharge)</li>
+                <li>Simplification de la production: un véhicule électrique comporte environ 200 pièces mobiles, contre
+                    2 000 pour un véhicule thermique</li>
+                <li>Émergence de "gigafactories" de batteries nécessitant des investissements massifs (plus de 515
+                    milliards d'euros annoncés au niveau mondial entre 2022 et 2030)</li>
+                <li>Tendance des constructeurs à internaliser la production de batteries et de composants stratégiques
+                </li>
             </ul>
         </div>
-        
+
         <div class="card fade-in">
             <h3>Impact sur l'emploi et les compétences</h3>
-            
+
             <div class="chart-container">
                 <canvas id="employmentChart"></canvas>
             </div>
-            
-            <p>La fabrication d'un véhicule électrique requiert environ 30% de main-d'œuvre en moins qu'un véhicule thermique équivalent. Cependant, cette baisse est partiellement compensée par la création d'emplois dans de nouveaux segments:</p>
+
+            <p>La fabrication d'un véhicule électrique requiert environ 30% de main-d'œuvre en moins qu'un véhicule
+                thermique équivalent. Cependant, cette baisse est partiellement compensée par la création d'emplois dans
+                de nouveaux segments:</p>
             <ul>
                 <li>Production et recyclage des batteries</li>
                 <li>Développement et maintenance des infrastructures de recharge</li>
@@ -975,17 +1378,147 @@
             </ul>
         </div>
 
-        <h2 id="strategies" class="fade-in">III. Stratégies économiques des acteurs</h2>
-        
+        <!-- NOUVELLE SECTION: Impact écologique -->
+        <h2 id="ecologique" class="fade-in">III. Impact écologique et comparaison avec les véhicules thermiques</h2>
+
+        <div class="card fade-in">
+            <h3>Le seuil d'équivalence écologique</h3>
+
+            <p>Les véhicules électriques génèrent généralement plus d'émissions lors de leur phase de production que les
+                véhicules thermiques, principalement en raison de la fabrication des batteries. Cependant, ils
+                deviennent plus écologiques sur leur cycle de vie complet grâce à leurs émissions réduites en phase
+                d'utilisation.</p>
+
+            <div class="chart-container">
+                <canvas id="emissionComparisonChart"></canvas>
+            </div>
+
+            <div class="eco-comparison">
+                <div class="eco-car electric">
+                    <div class="eco-car-icon">⚡</div>
+                    <h4>Véhicule électrique</h4>
+                    <p>Émissions de CO₂ plus élevées lors de la production (10-20 tonnes), mais quasiment nulles pendant
+                        l'usage (selon le mix électrique)</p>
+
+                    <div class="eco-milestone">
+                        <div class="eco-progress"></div>
+                    </div>
+                    <div class="eco-markers">
+                        <span>0 km</span>
+                        <span>20 000 km</span>
+                        <span>40 000 km</span>
+                    </div>
+                </div>
+
+                <div class="eco-car thermal">
+                    <div class="eco-car-icon">🔥</div>
+                    <h4>Véhicule thermique</h4>
+                    <p>Émissions de CO₂ plus faibles lors de la production (5-10 tonnes), mais constantes pendant toute
+                        la durée d'usage (~120-180g/km)</p>
+
+                    <div class="eco-milestone">
+                        <div class="eco-progress"></div>
+                    </div>
+                    <div class="eco-markers">
+                        <span>0 km</span>
+                        <span>20 000 km</span>
+                        <span>40 000 km</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="highlight">
+                <p>En Europe, avec le mix électrique actuel, un véhicule électrique devient plus écologique qu'un
+                    véhicule thermique équivalent après environ 30 000 à 40 000 kilomètres parcourus, soit
+                    approximativement 2 à 3 ans d'utilisation moyenne.</p>
+            </div>
+
+            <p>Ce seuil d'équivalence écologique varie considérablement selon plusieurs facteurs:</p>
+
+            <table>
+                <tr>
+                    <th>Facteur</th>
+                    <th>Impact sur le seuil d'équivalence</th>
+                </tr>
+                <tr>
+                    <td>Mix électrique du pays</td>
+                    <td>Dans un pays à électricité fortement carbonée (ex: Chine, Pologne), le seuil peut atteindre 70
+                        000 km. Dans un pays à électricité bas-carbone (ex: France, Norvège), il peut être réduit à 20
+                        000 km.</td>
+                </tr>
+                <tr>
+                    <td>Taille de la batterie</td>
+                    <td>Une batterie plus grande augmente l'empreinte initiale et donc le seuil d'équivalence.</td>
+                </tr>
+                <tr>
+                    <td>Durée de vie du véhicule</td>
+                    <td>Plus la durée de vie est longue, plus l'avantage écologique du véhicule électrique est
+                        important.</td>
+                </tr>
+                <tr>
+                    <td>Source des matériaux</td>
+                    <td>L'utilisation de matériaux recyclés ou l'optimisation de la chaîne d'approvisionnement peut
+                        réduire l'empreinte initiale.</td>
+                </tr>
+            </table>
+
+            <div class="timeline">
+                <div class="timeline-line"></div>
+
+                <div class="timeline-event">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-year">Production</div>
+                    <div class="timeline-content">
+                        <div class="timeline-title">Phase de fabrication</div>
+                        <p>Véhicule électrique: ~10-20 tonnes de CO₂<br>Véhicule thermique: ~5-10 tonnes de CO₂</p>
+                        <p>Différence principalement due à la fabrication des batteries.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-event">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-year">30-40k km</div>
+                    <div class="timeline-content">
+                        <div class="timeline-title">Point d'équivalence écologique</div>
+                        <p>Après 30 000 à 40 000 km parcourus, l'empreinte carbone cumulée des deux véhicules devient
+                            équivalente.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-event">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-year">150k km</div>
+                    <div class="timeline-content">
+                        <div class="timeline-title">Usage prolongé</div>
+                        <p>À 150 000 km, un véhicule électrique a émis environ 35 tonnes de CO₂ en moins qu'un véhicule
+                            thermique comparable (en Europe avec le mix électrique moyen actuel).</p>
+                    </div>
+                </div>
+
+                <div class="timeline-event">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-year">Fin de vie</div>
+                    <div class="timeline-content">
+                        <div class="timeline-title">Recyclage</div>
+                        <p>Valorisation possible de 95% des matériaux des batteries, réduisant encore l'impact
+                            environnemental global.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h2 id="strategies" class="fade-in">IV. Stratégies économiques des acteurs</h2>
+
         <div class="card fade-in">
             <h3>Politiques publiques et incitations économiques</h3>
-            
+
             <div class="small-chart">
                 <canvas id="incentivesChart"></canvas>
             </div>
-            
-            <p>Les pouvoirs publics jouent un rôle déterminant dans l'accélération de la transition vers l'électromobilité à travers différents leviers:</p>
-            
+
+            <p>Les pouvoirs publics jouent un rôle déterminant dans l'accélération de la transition vers
+                l'électromobilité à travers différents leviers:</p>
+
             <div class="challenges">
                 <div class="challenge-item">
                     <h4>Incitations financières</h4>
@@ -1001,10 +1534,10 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="card fade-in">
             <h3>Stratégies industrielles des constructeurs</h3>
-            
+
             <table>
                 <tr>
                     <th>Stratégie</th>
@@ -1034,17 +1567,19 @@
             </table>
         </div>
 
-        <h2 id="challenges" class="fade-in">IV. Défis économiques et perspectives d'avenir</h2>
-        
+        <h2 id="challenges" class="fade-in">V. Défis économiques et perspectives d'avenir</h2>
+
         <div class="card fade-in">
             <h3>Enjeux de rentabilité et compétitivité</h3>
-            
+
             <div class="chart-container">
                 <canvas id="profitabilityChart"></canvas>
             </div>
-            
-            <p>Le seuil de rentabilité pour les véhicules électriques est généralement estimé à une production annuelle minimale de 500 000 à 1 million d'unités par plateforme, un niveau que seuls quelques acteurs atteignent actuellement.</p>
-            
+
+            <p>Le seuil de rentabilité pour les véhicules électriques est généralement estimé à une production annuelle
+                minimale de 500 000 à 1 million d'unités par plateforme, un niveau que seuls quelques acteurs atteignent
+                actuellement.</p>
+
             <div class="challenges">
                 <div class="challenge-item">
                     <h4>Coûts de production</h4>
@@ -1060,29 +1595,38 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="card fade-in">
             <h3>Évolutions technologiques et opportunités</h3>
-            
+
             <div class="chart-container">
                 <canvas id="techEvolutionChart"></canvas>
             </div>
-            
+
             <p>L'électromobilité continue d'évoluer rapidement, ouvrant de nouvelles perspectives économiques:</p>
             <ul>
-                <li>Innovations dans les batteries: batteries solides, sans cobalt ou utilisant de nouveaux matériaux comme le sodium, pouvant réduire les coûts de 30 à 50%</li>
-                <li>Intégration dans les réseaux énergétiques intelligents: technologies Vehicle-to-Grid permettant aux véhicules de restituer de l'électricité au réseau</li>
-                <li>Économie circulaire des batteries: développement d'une filière de reconditionnement et de recyclage, avec un potentiel de récupération de 95% des matériaux critiques</li>
-                <li>Convergence avec les technologies autonomes: transformation radicale des modèles économiques de la mobilité</li>
+                <li>Innovations dans les batteries: batteries solides, sans cobalt ou utilisant de nouveaux matériaux
+                    comme le sodium, pouvant réduire les coûts de 30 à 50%</li>
+                <li>Intégration dans les réseaux énergétiques intelligents: technologies Vehicle-to-Grid permettant aux
+                    véhicules de restituer de l'électricité au réseau</li>
+                <li>Économie circulaire des batteries: développement d'une filière de reconditionnement et de recyclage,
+                    avec un potentiel de récupération de 95% des matériaux critiques</li>
+                <li>Convergence avec les technologies autonomes: transformation radicale des modèles économiques de la
+                    mobilité</li>
             </ul>
         </div>
 
         <div class="card fade-in">
             <h3>Conclusion</h3>
-            <p>La transition vers les voitures électriques constitue bien plus qu'une simple évolution technologique: elle représente une transformation systémique de l'économie automobile mondiale, avec des répercussions sur l'ensemble des secteurs adjacents – énergie, infrastructures, services de mobilité.</p>
-            <p>À l'horizon 2030-2035, les voitures électriques devraient représenter la majorité des ventes de véhicules neufs dans la plupart des économies avancées, transformant profondément non seulement l'industrie automobile, mais également nos modèles de mobilité et nos systèmes énergétiques.</p>
+            <p>La transition vers les voitures électriques constitue bien plus qu'une simple évolution technologique:
+                elle représente une transformation systémique de l'économie automobile mondiale, avec des répercussions
+                sur l'ensemble des secteurs adjacents – énergie, infrastructures, services de mobilité.</p>
+            <p>À l'horizon 2030-2035, les voitures électriques devraient représenter la majorité des ventes de véhicules
+                neufs dans la plupart des économies avancées, transformant profondément non seulement l'industrie
+                automobile, mais également nos modèles de mobilité et nos systèmes énergétiques.</p>
             <div class="highlight">
-                <p>Cette révolution constitue à la fois un défi économique majeur et une opportunité historique de réinvention pour l'ensemble des acteurs concernés.</p>
+                <p>Cette révolution constitue à la fois un défi économique majeur et une opportunité historique de
+                    réinvention pour l'ensemble des acteurs concernés.</p>
             </div>
         </div>
     </div>
@@ -1136,32 +1680,32 @@
         Chart.defaults.plugins.legend.labels.usePointStyle = true;
         Chart.defaults.plugins.legend.labels.padding = 15;
         Chart.defaults.plugins.legend.labels.color = '#f1f7ff';
-        
+
         // Système de particules avec Three.js
         class ParticleSystem {
             constructor() {
                 this.container = document.getElementById('particles-container');
                 this.scene = new THREE.Scene();
-                
+
                 this.camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
                 this.camera.position.z = 30;
-                
+
                 this.renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
                 this.renderer.setSize(window.innerWidth, window.innerHeight);
                 this.renderer.setPixelRatio(window.devicePixelRatio);
                 this.container.appendChild(this.renderer.domElement);
-                
+
                 this.particles = [];
                 this.count = window.innerWidth < 768 ? 100 : 200;
-                
+
                 window.addEventListener('resize', this.onWindowResize.bind(this));
-                
+
                 this.init();
                 this.animate();
             }
-            
+
             init() {
-                // Create particles
+                // Création de la géométrie et du matériau pour les particules
                 const particleGeometry = new THREE.BufferGeometry();
                 const particlesMaterial = new THREE.PointsMaterial({
                     size: 0.5,
@@ -1170,37 +1714,39 @@
                     vertexColors: true,
                     blending: THREE.AdditiveBlending
                 });
-                
+
+                // Création des tableaux pour stocker les positions, les couleurs et les tailles
                 const positions = new Float32Array(this.count * 3);
-                const colors = new Float32Array(this.count * 3);
+                const particleColors = new Float32Array(this.count * 3); // Renommé pour éviter le conflit avec la variable globale "colors"
                 const sizes = new Float32Array(this.count);
-                
+
+                // Utilisation de la variable globale "colors" pour récupérer la configuration des couleurs
                 const color1 = new THREE.Color(colors.primary);
                 const color2 = new THREE.Color(colors.secondary);
                 const color3 = new THREE.Color(colors.accent);
-                
+
                 for (let i = 0; i < this.count; i++) {
-                    // Positions
-                    positions[i * 3] = (Math.random() - 0.5) * 50;     // x
-                    positions[i * 3 + 1] = (Math.random() - 0.5) * 50; // y
-                    positions[i * 3 + 2] = (Math.random() - 0.5) * 50; // z
-                    
-                    // Colors - randomly choose one of three colors
+                    // Définition aléatoire des positions
+                    positions[i * 3] = (Math.random() - 0.5) * 50;
+                    positions[i * 3 + 1] = (Math.random() - 0.5) * 50;
+                    positions[i * 3 + 2] = (Math.random() - 0.5) * 50;
+
+                    // Choix aléatoire d'une couleur parmi color1, color2 et color3
                     const colorChoice = Math.floor(Math.random() * 3);
                     let selectedColor;
-                    
                     if (colorChoice === 0) selectedColor = color1;
                     else if (colorChoice === 1) selectedColor = color2;
                     else selectedColor = color3;
-                    
-                    colors[i * 3] = selectedColor.r;     // r
-                    colors[i * 3 + 1] = selectedColor.g; // g
-                    colors[i * 3 + 2] = selectedColor.b; // b
-                    
-                    // Sizes
+
+                    // Affectation de la couleur sélectionnée dans le tableau particleColors
+                    particleColors[i * 3] = selectedColor.r;
+                    particleColors[i * 3 + 1] = selectedColor.g;
+                    particleColors[i * 3 + 2] = selectedColor.b;
+
+                    // Définition aléatoire de la taille de la particule
                     sizes[i] = Math.random() * 2;
-                    
-                    // Store particles data for animation
+
+                    // Stockage des données de la particule pour l'animation
                     this.particles.push({
                         velocity: {
                             x: (Math.random() - 0.5) * 0.02,
@@ -1214,26 +1760,29 @@
                         }
                     });
                 }
-                
+
+                // Ajout des attributs à la géométrie
                 particleGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-                particleGeometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+                particleGeometry.setAttribute('color', new THREE.BufferAttribute(particleColors, 3));
                 particleGeometry.setAttribute('size', new THREE.BufferAttribute(sizes, 1));
-                
+
+                // Création du système de particules et ajout à la scène
                 this.particleSystem = new THREE.Points(particleGeometry, particlesMaterial);
                 this.scene.add(this.particleSystem);
             }
-            
+
+
             animate() {
                 requestAnimationFrame(this.animate.bind(this));
-                
+
                 const positions = this.particleSystem.geometry.attributes.position.array;
-                
+
                 for (let i = 0; i < this.count; i++) {
                     // Update positions based on velocity
                     this.particles[i].position.x += this.particles[i].velocity.x;
                     this.particles[i].position.y += this.particles[i].velocity.y;
                     this.particles[i].position.z += this.particles[i].velocity.z;
-                    
+
                     // Check bounds and reverse velocity if needed
                     if (Math.abs(this.particles[i].position.x) > 25) {
                         this.particles[i].velocity.x *= -1;
@@ -1244,28 +1793,28 @@
                     if (Math.abs(this.particles[i].position.z) > 25) {
                         this.particles[i].velocity.z *= -1;
                     }
-                    
+
                     // Update buffer geometry
                     positions[i * 3] = this.particles[i].position.x;
                     positions[i * 3 + 1] = this.particles[i].position.y;
                     positions[i * 3 + 2] = this.particles[i].position.z;
                 }
-                
+
                 this.particleSystem.geometry.attributes.position.needsUpdate = true;
                 this.particleSystem.rotation.y += 0.0005;
-                
+
                 this.renderer.render(this.scene, this.camera);
             }
-            
+
             onWindowResize() {
                 this.camera.aspect = window.innerWidth / window.innerHeight;
                 this.camera.updateProjectionMatrix();
                 this.renderer.setSize(window.innerWidth, window.innerHeight);
             }
         }
-        
+
         // Initialisation de tous les graphiques et animations une fois que le DOM est chargé
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             // Initialiser le système de particules (si Three.js est chargé correctement)
             if (typeof THREE !== 'undefined') {
                 try {
@@ -1274,28 +1823,28 @@
                     console.error("Erreur lors de l'initialisation du système de particules:", e);
                 }
             }
-            
+
             // Animation des éléments au scroll
             const fadeElements = document.querySelectorAll('.fade-in');
-            
+
             const fadeInOnScroll = () => {
                 fadeElements.forEach(el => {
                     const elementTop = el.getBoundingClientRect().top;
                     const elementVisible = 150;
-                    
+
                     if (elementTop < window.innerHeight - elementVisible) {
                         el.classList.add('visible');
                     }
                 });
             };
-            
+
             window.addEventListener('scroll', fadeInOnScroll);
             fadeInOnScroll(); // Vérifier les éléments visibles au chargement
-            
+
             // Animation pour compter les chiffres dans les cartes de statistiques
             const countStats = () => {
                 const statValues = document.querySelectorAll('.stat-value');
-                
+
                 statValues.forEach(stat => {
                     const targetValue = parseInt(stat.getAttribute('data-value'));
                     const countDuration = 2500; // durée en ms
@@ -1304,11 +1853,11 @@
                     const stepValue = targetValue / totalSteps;
                     let currentValue = 0;
                     let currentStep = 0;
-                    
+
                     const counter = setInterval(() => {
                         currentStep++;
                         currentValue += stepValue;
-                        
+
                         if (currentStep >= totalSteps) {
                             clearInterval(counter);
                             stat.textContent = targetValue + '%';
@@ -1318,7 +1867,29 @@
                     }, stepTime);
                 });
             };
-            
+
+            // Animation pour le point d'équilibre écologique
+            const animateEcoProgress = () => {
+                const electricProgress = document.querySelector('.eco-car.electric .eco-progress');
+                const thermalProgress = document.querySelector('.eco-car.thermal .eco-progress');
+
+                // Animer progressivement les barres pour montrer l'évolution des émissions
+                setTimeout(() => {
+                    if (electricProgress) electricProgress.style.width = '80%'; // Émissions initiales élevées
+                    if (thermalProgress) thermalProgress.style.width = '30%'; // Émissions initiales plus faibles
+                }, 500);
+
+                setTimeout(() => {
+                    if (electricProgress) electricProgress.style.width = '40%'; // Diminution progressive
+                    if (thermalProgress) thermalProgress.style.width = '40%'; // Point d'équivalence
+                }, 2000);
+
+                setTimeout(() => {
+                    if (electricProgress) electricProgress.style.width = '20%'; // Avantage écologique
+                    if (thermalProgress) thermalProgress.style.width = '80%'; // Désavantage croissant
+                }, 3500);
+            };
+
             // Observer pour déclencher l'animation de comptage lorsque les stats sont visibles
             const statsObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
@@ -1328,54 +1899,69 @@
                     }
                 });
             }, { threshold: 0.5 });
-            
+
             const statsSection = document.querySelector('.grid');
             if (statsSection) {
                 statsObserver.observe(statsSection);
             }
-            
+
+            // Observer pour l'animation des barres écologiques
+            const ecoObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateEcoProgress();
+                        ecoObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            const ecoSection = document.querySelector('.eco-comparison');
+            if (ecoSection) {
+                ecoObserver.observe(ecoSection);
+            }
+
             // Curseur personnalisé
             const cursor = document.querySelector('.cursor');
-            
+
             if (window.innerWidth > 1024) {
                 document.addEventListener('mousemove', (e) => {
                     cursor.style.left = e.clientX + 'px';
                     cursor.style.top = e.clientY + 'px';
                 });
-                
+
                 const hoverElements = document.querySelectorAll('a, button, .card, .stat-card, .challenge-item, .nav-dot, h2, h3');
-                
+
                 hoverElements.forEach(element => {
                     element.addEventListener('mouseenter', () => {
                         cursor.classList.add('expand');
                     });
-                    
+
                     element.addEventListener('mouseleave', () => {
                         cursor.classList.remove('expand');
                     });
                 });
             }
-            
+
             // Barre de progression de lecture
             const progressBar = document.querySelector('.progress-bar');
-            
+
             window.addEventListener('scroll', () => {
                 const windowHeight = window.innerHeight;
                 const documentHeight = document.documentElement.scrollHeight - windowHeight;
                 const scrollTop = window.scrollY;
                 const progress = (scrollTop / documentHeight) * 100;
-                
+
                 progressBar.style.width = progress + '%';
             });
-            
+
             // Navigation par points latéraux
             const navDots = document.querySelectorAll('.nav-dot');
-            
+
             navDots.forEach(dot => {
                 dot.addEventListener('click', () => {
                     const sectionId = dot.getAttribute('data-section');
                     const section = document.getElementById(sectionId);
-                    
+
                     if (section) {
                         window.scrollTo({
                             top: section.offsetTop - 100,
@@ -1384,34 +1970,34 @@
                     }
                 });
             });
-            
+
             // Mettre à jour le point actif lors du défilement
-            const sections = ['header', 'evolution', 'impact', 'strategies', 'challenges'];
-            
+            const sections = ['header', 'evolution', 'impact', 'ecologique', 'strategies', 'challenges'];
+
             window.addEventListener('scroll', () => {
                 const scrollPosition = window.scrollY + 300;
-                
+
                 sections.forEach(sectionId => {
                     const section = document.getElementById(sectionId);
-                    
+
                     if (section) {
                         const sectionTop = section.offsetTop;
                         const sectionBottom = sectionTop + section.offsetHeight;
-                        
+
                         if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
                             document.querySelectorAll('.nav-dot').forEach(dot => {
                                 dot.classList.remove('active');
                             });
-                            
+
                             document.querySelector(`.nav-dot[data-section="${sectionId}"]`).classList.add('active');
                         }
                     }
                 });
             });
-            
+
             // Bouton d'appel à l'action flottant
             const floatingCta = document.querySelector('.floating-cta');
-            
+
             if (floatingCta) {
                 floatingCta.addEventListener('click', () => {
                     window.scrollTo({
@@ -1420,7 +2006,7 @@
                     });
                 });
             }
-            
+
             // Initialisation des graphiques
             // 1. Croissance du marché
             const marketGrowthCtx = document.getElementById('marketGrowthChart').getContext('2d');
@@ -1474,7 +2060,7 @@
                                 color: 'rgba(255, 255, 255, 0.05)'
                             },
                             ticks: {
-                                callback: function(value) {
+                                callback: function (value) {
                                     return value + ' M';
                                 }
                             }
@@ -1490,7 +2076,7 @@
                     }
                 }
             });
-            
+
             // 2. Prix des batteries
             const batteryPriceCtx = document.getElementById('batteryPriceChart').getContext('2d');
             new Chart(batteryPriceCtx, {
@@ -1536,8 +2122,8 @@
                                 color: 'rgba(255, 255, 255, 0.05)'
                             },
                             ticks: {
-                                callback: function(value) {
-                                    return value + ' $' ;
+                                callback: function (value) {
+                                    return value + ' $';
                                 }
                             }
                         }
@@ -1548,7 +2134,7 @@
                     }
                 }
             });
-            
+
             // 3. Parts de marché
             const marketShareCtx = document.getElementById('marketShareChart').getContext('2d');
             new Chart(marketShareCtx, {
@@ -1595,7 +2181,7 @@
                         },
                         tooltip: {
                             callbacks: {
-                                label: function(context) {
+                                label: function (context) {
                                     return context.label + ': ' + context.raw + '%';
                                 }
                             }
@@ -1610,7 +2196,7 @@
                     }
                 }
             });
-            
+
             // 4. Chaîne de valeur
             const valueChainCtx = document.getElementById('valueChainChart').getContext('2d');
             new Chart(valueChainCtx, {
@@ -1663,7 +2249,7 @@
                                 color: 'rgba(255, 255, 255, 0.05)'
                             },
                             ticks: {
-                                callback: function(value) {
+                                callback: function (value) {
                                     return value + '%';
                                 }
                             }
@@ -1675,7 +2261,7 @@
                     }
                 }
             });
-            
+
             // 5. Impact sur l'emploi
             const employmentCtx = document.getElementById('employmentChart').getContext('2d');
             new Chart(employmentCtx, {
@@ -1753,7 +2339,7 @@
                     }
                 }
             });
-            
+
             // 6. Incitations
             const incentivesCtx = document.getElementById('incentivesChart').getContext('2d');
             new Chart(incentivesCtx, {
@@ -1806,8 +2392,82 @@
                     }
                 }
             });
-            
-            // 7. Rentabilité
+
+            // 7. Émissions CO2 comparatives
+            const emissionComparisonCtx = document.getElementById('emissionComparisonChart')?.getContext('2d');
+            if (emissionComparisonCtx) {
+                new Chart(emissionComparisonCtx, {
+                    type: 'line',
+                    data: {
+                        labels: ['0', '10k', '20k', '30k', '40k', '50k', '75k', '100k', '150k', '200k'],
+                        datasets: [
+                            {
+                                label: 'Véhicule électrique (tonnes CO₂)',
+                                data: [15, 15.5, 16, 16.5, 17, 17.5, 19, 20.5, 23.5, 26.5],
+                                borderColor: colors.primary,
+                                backgroundColor: 'transparent',
+                                borderWidth: 3,
+                                tension: 0.3
+                            },
+                            {
+                                label: 'Véhicule thermique (tonnes CO₂)',
+                                data: [7, 10, 13, 16, 19, 22, 30, 38, 54, 70],
+                                borderColor: colors.accent,
+                                backgroundColor: 'transparent',
+                                borderWidth: 3,
+                                tension: 0.3
+                            }
+                        ]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            title: {
+                                display: true,
+                                text: 'Émissions de CO₂ cumulées sur le cycle de vie (tonnes)',
+                                font: {
+                                    size: 18,
+                                    weight: 'bold'
+                                },
+                                padding: 20
+                            }
+                        },
+                        scales: {
+                            x: {
+                                title: {
+                                    display: true,
+                                    text: 'Kilométrage',
+                                    color: 'rgba(255, 255, 255, 0.7)'
+                                },
+                                grid: {
+                                    color: 'rgba(255, 255, 255, 0.05)'
+                                }
+                            },
+                            y: {
+                                title: {
+                                    display: true,
+                                    text: 'Émissions CO₂ (tonnes)',
+                                    color: 'rgba(255, 255, 255, 0.7)'
+                                },
+                                grid: {
+                                    color: 'rgba(255, 255, 255, 0.05)'
+                                }
+                            }
+                        },
+                        interaction: {
+                            intersect: false,
+                            mode: 'index'
+                        },
+                        animation: {
+                            duration: 2000,
+                            easing: 'easeOutQuart'
+                        }
+                    }
+                });
+            }
+
+            // 8. Rentabilité
             const profitabilityCtx = document.getElementById('profitabilityChart').getContext('2d');
             new Chart(profitabilityCtx, {
                 type: 'line',
@@ -1868,7 +2528,7 @@
                                 color: 'rgba(255, 255, 255, 0.05)'
                             },
                             ticks: {
-                                callback: function(value) {
+                                callback: function (value) {
                                     return value + '%';
                                 }
                             }
@@ -1884,111 +2544,6 @@
                     }
                 }
             });
-            
-            // 8. Évolution technologique
-            const techEvolutionCtx = document.getElementById('techEvolutionChart').getContext('2d');
-            new Chart(techEvolutionCtx, {
-                type: 'radar',
-                data: {
-                    labels: ['Coût', 'Autonomie', 'Temps de recharge', 'Durée de vie', 'Densité énergétique', 'Recyclabilité'],
-                    datasets: [{
-                        label: '2015',
-                        data: [20, 30, 25, 65, 30, 40],
-                        backgroundColor: 'rgba(255, 58, 140, 0.2)',
-                        borderColor: colors.accent,
-                        pointBackgroundColor: colors.accent,
-                        pointBorderColor: colors.dark,
-                        pointHoverBorderColor: colors.dark,
-                        pointHoverBackgroundColor: colors.accent,
-                        borderWidth: 2,
-                        pointRadius: 4,
-                        pointHoverRadius: 6
-                    }, {
-                        label: '2024',
-                        data: [60, 70, 60, 80, 75, 65],
-                        backgroundColor: 'rgba(0, 245, 255, 0.2)',
-                        borderColor: colors.primary,
-                        pointBackgroundColor: colors.primary,
-                        pointBorderColor: colors.dark,
-                        pointHoverBorderColor: colors.dark,
-                        pointHoverBackgroundColor: colors.primary,
-                        borderWidth: 2,
-                        pointRadius: 4,
-                        pointHoverRadius: 6
-                    }, {
-                        label: '2030 (prévision)',
-                        data: [85, 90, 85, 90, 90, 95],
-                        backgroundColor: 'rgba(125, 17, 255, 0.2)',
-                        borderColor: colors.secondary,
-                        pointBackgroundColor: colors.secondary,
-                        pointBorderColor: colors.dark,
-                        pointHoverBorderColor: colors.dark,
-                        pointHoverBackgroundColor: colors.secondary,
-                        borderWidth: 2,
-                        pointRadius: 4,
-                        pointHoverRadius: 6,
-                        borderDash: [5, 5]
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        title: {
-                            display: true,
-                            text: 'Évolution des performances des batteries (indice 100 = optimal)',
-                            font: {
-                                size: 18,
-                                weight: 'bold'
-                            },
-                            padding: 20
-                        },
-                        legend: {
-                            position: 'top',
-                            labels: {
-                                padding: 20,
-                                font: {
-                                    size: 14
-                                }
-                            }
-                        },
-                        tooltip: {
-                            callbacks: {
-                                label: function(context) {
-                                    return context.dataset.label + ': ' + context.raw + '/100';
-                                }
-                            }
-                        }
-                    },
-                    scales: {
-                        r: {
-                            angleLines: {
-                                color: 'rgba(255, 255, 255, 0.1)'
-                            },
-                            grid: {
-                                color: 'rgba(255, 255, 255, 0.1)'
-                            },
-                            pointLabels: {
-                                font: {
-                                    size: 14,
-                                    weight: 'bold'
-                                }
-                            },
-                            suggestedMin: 0,
-                            suggestedMax: 100,
-                            ticks: {
-                                stepSize: 20,
-                                backdropColor: 'transparent'
-                            }
-                        }
-                    },
-                    animation: {
-                        duration: 2000,
-                        easing: 'easeOutQuart'
-                    }
-                }
-            });
-            
         });
     </script>
 </body>
